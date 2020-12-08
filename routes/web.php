@@ -18,14 +18,14 @@ Route::get('/', function () {
 });
 Route::group([
 
-    'middleware' => 'web',
     'prefix' => 'web'
 
 ], function ($router) {
-
-    Route::post('login', 'AuthController@login');
-    Route::post('logout', 'AuthController@logout');
-    Route::post('refresh', 'AuthController@refresh');
-    Route::post('me', 'AuthController@me');
-
+    Route::post('register','Web\AuthController@register');
+    Route::post('login', 'Web\AuthController@login');
+    Route::group(['middleware' => 'api'],function (){
+        Route::post('logout', 'Web\AuthController@logout');
+        Route::post('refresh', 'Web\AuthController@refresh');
+        Route::post('me', 'Web\AuthController@me');
+    });
 });
