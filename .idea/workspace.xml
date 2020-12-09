@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="05756032-9271-4a4b-bec6-b7902d55d6f2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/ExampleComponent.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/router/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/store/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/views/Index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Web/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Web/AuthController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Model/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Model/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -20,6 +22,14 @@
     <execution>
       <executable />
     </execution>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="Vue Single File Component" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -169,7 +179,7 @@
       <option name="presentableId" value="Default" />
       <updated>1607410126988</updated>
       <workItem from="1607410130400" duration="975000" />
-      <workItem from="1607412178694" duration="3971000" />
+      <workItem from="1607412178694" duration="9865000" />
     </task>
     <servers />
   </component>
@@ -177,10 +187,14 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="776" y="443" key="NewPhpFileDialog" timestamp="1607412979418">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1607419481440">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="776" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1607412979418" />
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1607419481440" />
+    <state x="776" y="443" key="NewPhpFileDialog" timestamp="1607505285471">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="776" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1607505285471" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1607416010661">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
