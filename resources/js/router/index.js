@@ -7,7 +7,7 @@ Vue.use(VueRouter)
 export const routes = [
     {
         path: '/',
-        name: 'Home',
+        name: '首页',
         component:resolve => require(['../views/Layout.vue'],resolve),
         children:[
             {
