@@ -82737,6 +82737,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var view_design__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(view_design__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var view_design_dist_styles_iview_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! view-design/dist/styles/iview.css */ "./node_modules/view-design/dist/styles/iview.css");
 /* harmony import */ var view_design_dist_styles_iview_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(view_design_dist_styles_iview_css__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _axios_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./axios/http */ "./resources/js/axios/http.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_6__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
@@ -82744,13 +82747,271 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
+
+
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(view_design__WEBPACK_IMPORTED_MODULE_3___default.a);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.$axios = axios__WEBPACK_IMPORTED_MODULE_6___default.a;
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.$api = _axios_http__WEBPACK_IMPORTED_MODULE_5__["default"];
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Home', __webpack_require__(/*! ./views/Index.vue */ "./resources/js/views/Index.vue")["default"]);
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app',
   router: _router__WEBPACK_IMPORTED_MODULE_1__["router"],
   store: _store__WEBPACK_IMPORTED_MODULE_2__["default"]
 });
+
+/***/ }),
+
+/***/ "./resources/js/axios/axios.js":
+/*!*************************************!*\
+  !*** ./resources/js/axios/axios.js ***!
+  \*************************************/
+/*! exports provided: get, post, filePost, http, getUrl */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* WEBPACK VAR INJECTION */(function(process) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "get", function() { return get; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "post", function() { return post; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "filePost", function() { return filePost; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "http", function() { return http; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getUrl", function() { return getUrl; });
+/* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../router */ "./resources/js/router/index.js");
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./config */ "./resources/js/axios/config.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+
+
+var token = localStorage.token;
+
+axios__WEBPACK_IMPORTED_MODULE_2___default.a.defaults.headers['authorization'] = "Bearer ".concat(token);
+axios__WEBPACK_IMPORTED_MODULE_2___default.a.defaults.baseURL = _config__WEBPACK_IMPORTED_MODULE_1__["default"]; // 请求的默认域名
+//创建axios实例
+
+var service = axios__WEBPACK_IMPORTED_MODULE_2___default.a.create({
+  timeout: 30000 //超时时间
+
+}); //添加request拦截器
+
+service.interceptors.request.use(function (config) {
+  return config;
+}, function (error) {
+  //之后如果没token就跳到登录
+  console.log(111);
+}); //添加response拦截器
+
+service.interceptors.response.use(function (response) {
+  if (response.status == 200) {
+    console.log(response);
+    var res = {};
+    res.status = response.status;
+    res.data = response.data;
+    return res;
+  } else {
+    //如果不是200 给出提示
+    console.log(2333);
+  }
+}, function (error) {
+  if (error.response && error.response.status == 404) {
+    //跳转到xx页面
+    console.log("404错误");
+  }
+
+  if (error.response && error.response.status == 401) {
+    _router__WEBPACK_IMPORTED_MODULE_0__["router"].push({
+      path: '/Login'
+    })["catch"](function (err) {
+      err;
+    });
+  } // return Promise.reject(error.response)
+
+}); //封装get接口
+// params={} 是设置默认值
+
+function get(url) {
+  var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  params.t = new Date().getTime(); //get方法加一个时间参数,解决ie下可能缓存问题.
+
+  return service({
+    url: url,
+    method: 'get',
+    headers: {},
+    params: params
+  });
+} //封装post请求
+
+function post(url) {
+  var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  //默认配置
+  var sendObject = {
+    url: url,
+    method: "post",
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8'
+    },
+    data: data
+  };
+  sendObject.data = JSON.stringify(data);
+  return service(sendObject);
+}
+function filePost(url) {
+  var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  //默认配置
+  var sendObject = {
+    url: url,
+    method: "post",
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    },
+    data: data
+  };
+  return service(sendObject);
+} //封装put方法 (resfulAPI常用)
+
+function put(url) {
+  var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  return service({
+    url: url,
+    method: 'put',
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8'
+    },
+    data: JSON.stringify(data)
+  });
+} //删除方法(resfulAPI常用)
+
+
+function deletes(url) {
+  return service({
+    url: url,
+    method: 'delete',
+    headers: {}
+  });
+} //patch方法(resfulAPI常用)
+
+
+function patch(url) {
+  return service({
+    url: url,
+    method: 'patch',
+    headers: {}
+  });
+} //处理格式化URL（/demo/{id}）
+
+
+function render(url, data) {
+  var re = /{([^]+)?}/;
+  var match = '';
+
+  while (match = re.exec(url)) {
+    url = url.replace(match[0], data[match[1]]);
+  }
+
+  return url;
+}
+
+var fetch = function fetch(options) {
+  //process.env.VUE_APP_PATH为环境变量在.env文件中配置
+  var url = process.env.VUE_APP_PATH + options.url;
+  url = render(url, options.data);
+
+  switch (options.method.toUpperCase()) {
+    case 'GET':
+      return get(url, options.data);
+
+    case 'POST':
+      return post(url, options.data);
+
+    case 'PUT':
+      return put(url, options.data);
+
+    case 'DELETE':
+      return deletes(url, options.data);
+
+    case 'PATCH':
+      return patch(url, options.data);
+
+    default:
+      return service(options);
+  }
+};
+/**
+ * 提供一个http方法
+ * url 访问路径 不包括域名和项目名
+ * data 参数对象
+ * method 请求方式
+ *  */
+
+
+function http() {
+  var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+  var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var method = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "GET";
+  var options = {
+    url: url,
+    data: data,
+    method: method
+  };
+  return fetch(options)["catch"](function (error) {
+    console.log(error);
+    throw error;
+  });
+}
+/**
+ * 构造url的方法
+ */
+
+function getUrl() {
+  var url = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+  //process.env.VUE_APP_PATH为环境变量在.env文件中配置
+  return process.env.VUE_APP_PATH + url;
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../node_modules/process/browser.js */ "./node_modules/process/browser.js")))
+
+/***/ }),
+
+/***/ "./resources/js/axios/config.js":
+/*!**************************************!*\
+  !*** ./resources/js/axios/config.js ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var baseUrl = 'http://laravel-blog.test/web';
+/* harmony default export */ __webpack_exports__["default"] = (baseUrl);
+
+/***/ }),
+
+/***/ "./resources/js/axios/http.js":
+/*!************************************!*\
+  !*** ./resources/js/axios/http.js ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./axios */ "./resources/js/axios/axios.js");
+
+var api = {
+  userLogin: function userLogin(data) {
+    return Object(_axios__WEBPACK_IMPORTED_MODULE_0__["post"])('/login', data);
+  },
+  userInfo: function userInfo(data) {
+    return Object(_axios__WEBPACK_IMPORTED_MODULE_0__["post"])('/user', data);
+  },
+  uploadImage: function uploadImage(data) {
+    return Object(_axios__WEBPACK_IMPORTED_MODULE_0__["filePost"])('/uploadImage', data);
+  },
+  postArticle: function postArticle(data) {
+    return Object(_axios__WEBPACK_IMPORTED_MODULE_0__["post"])('/article', data);
+  },
+  getArticle: function getArticle(data) {
+    return Object(_axios__WEBPACK_IMPORTED_MODULE_0__["get"])('/articleList', data);
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (api);
 
 /***/ }),
 

@@ -1,7 +1,7 @@
-import axios from 'axios';
-import Router from '../router'
+import {router as Router} from '../router'
 import baseUrl from "./config";
 const token = localStorage.token
+import axios from 'axios'
 axios.defaults.headers['authorization'] = `Bearer ${token}`
 axios.defaults.baseURL = baseUrl; // 请求的默认域名
 
