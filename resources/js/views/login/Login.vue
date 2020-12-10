@@ -57,12 +57,15 @@
                         if(res.status == 200){
                             localStorage.token =  res.data.access_token
                             this.$router.push({
-                                name: "home",
+                                path: "index",
                             });
                         }
                     })
                 }
             }
+        },
+        mounted() {
+
         }
     };
 </script>

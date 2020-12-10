@@ -82,13 +82,14 @@ __webpack_require__.r(__webpack_exports__);
             localStorage.token = res.data.access_token;
 
             _this.$router.push({
-              name: "home"
+              path: "index"
             });
           }
         });
       }
     }
-  }
+  },
+  mounted: function mounted() {}
 });
 
 /***/ }),
