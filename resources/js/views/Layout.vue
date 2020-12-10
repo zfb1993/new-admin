@@ -10,7 +10,7 @@
                                              :to="group.path+item.path"
                                   v-if="item.name"
                     >
-                        <Icon type="md-document" />
+                        <Icon :type="item.icon"/>
                         {{item.name}}
                     </MenuItem>
                     </MenuGroup>
@@ -84,6 +84,7 @@
                 height: 100%;
                 ul{
                     height: 100%;
+                    background-color: #363e4f;
                 }
             }
             .content{

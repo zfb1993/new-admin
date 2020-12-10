@@ -40,6 +40,63 @@ export const routes = [
             },
         ],
     },
+    {
+        path: '/',
+        name: '标签管理',
+        component:resolve => require(['../views/Layout.vue'],resolve),
+        children:[
+            {
+                name: '标签列表',
+                icon:"ios-bookmark",
+                path: 'index',
+                component: Home,
+            },
+            {
+                name:'新建标签',
+                icon:"ios-bookmark",
+                path: 'user',
+                component: () => import('../views/About.vue'),
+            },
+        ],
+    },
+    {
+        path: '/',
+        name: '分类管理',
+        component:resolve => require(['../views/Layout.vue'],resolve),
+        children:[
+            {
+                name: '分类列表',
+                icon:"logo-buffer",
+                path: 'index',
+                component: Home,
+            },
+            {
+                name:'新建分类',
+                icon:"logo-buffer",
+                path: 'user',
+                component: () => import('../views/About.vue'),
+            },
+        ],
+    },
+    {
+        path: '/',
+        name: '文章管理',
+        component:resolve => require(['../views/Layout.vue'],resolve),
+        children:[
+            {
+                name: '文章列表',
+                icon:"md-book",
+                path: 'index',
+                component: Home,
+            },
+            {
+                name:'新建文章',
+                icon:"md-book",
+                path: 'user',
+                component: () => import('../views/About.vue'),
+            },
+        ],
+    },
 ]
 
 export const router = new VueRouter({

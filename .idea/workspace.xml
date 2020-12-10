@@ -2,11 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="05756032-9271-4a4b-bec6-b7902d55d6f2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/js/views/articles/detail.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/views/articles/list.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/views/categories/list.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/views/tags/list.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/chunks/0.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/chunks/0.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/chunks/1.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/chunks/1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/axios/axios.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/axios/axios.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/views/login/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/login/Login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/chunks/2.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/chunks/2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/Layout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/Layout.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/widgets/TopBar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/widgets/TopBar.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +29,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Vue Single File Component" />
         <option value="JavaScript File" />
+        <option value="Vue Single File Component" />
       </list>
     </option>
   </component>
@@ -181,7 +188,7 @@
       <option name="presentableId" value="Default" />
       <updated>1607410126988</updated>
       <workItem from="1607410130400" duration="975000" />
-      <workItem from="1607412178694" duration="20005000" />
+      <workItem from="1607412178694" duration="22615000" />
     </task>
     <servers />
   </component>

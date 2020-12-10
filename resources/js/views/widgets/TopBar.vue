@@ -16,12 +16,12 @@ export default {
         height: 50px;
         width: 100%;
         .left{
-            background-color: #515a6e;
+            background-color: #363e4f;
             width: 240px;
-            height: 100%; 
+            height: 100%;
         }
         .right{
-            height: 100%; 
+            height: 100%;
             width: calc(100% - 240px);
         }
     }
