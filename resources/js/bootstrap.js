@@ -1,3 +1,4 @@
+require('./tools');
 window._ = require('lodash');
 
 /**

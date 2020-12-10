@@ -5,13 +5,14 @@
             <div class="menu">
                 <Menu :active-name="activeName" theme="dark" :class="menuitemClasses" @on-select="get_menu_name">
                     <MenuGroup :title="group.name" v-for="(group,index) in routes" :key="index">
-                        <MenuItem v-for="(item,i) in group.children" :key="i" 
-                            :name="JSON.stringify({name:item.name,path:group.path+item.path})"
-                            :to="group.path+item.path"
-                        >
-                            <Icon type="md-document" />
-                            {{item.name}}
-                        </MenuItem>
+                        <MenuItem v-for="(item,i) in group.children" :key="i"
+                                             :name="JSON.stringify({name:item.name,path:group.path+item.path})"
+                                             :to="group.path+item.path"
+                                  v-if="item.name"
+                    >
+                        <Icon type="md-document" />
+                        {{item.name}}
+                    </MenuItem>
                     </MenuGroup>
                 </Menu>
             </div>
@@ -21,7 +22,7 @@
                 </Content>
             </div>
         </div>
-        
+
     </div>
 </template>
 <script>

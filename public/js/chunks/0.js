@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[1],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[0],{
 
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Layout.vue?vue&type=script&lang=js&":
 /*!************************************************************************************************************************************************************!*\
@@ -11,6 +11,7 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../router */ "./resources/js/router/index.js");
 /* harmony import */ var _widgets_TopBar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./widgets/TopBar */ "./resources/js/views/widgets/TopBar.vue");
+//
 //
 //
 //
@@ -228,28 +229,30 @@ var render = function() {
                   "MenuGroup",
                   { key: index, attrs: { title: group.name } },
                   _vm._l(group.children, function(item, i) {
-                    return _c(
-                      "MenuItem",
-                      {
-                        key: i,
-                        attrs: {
-                          name: JSON.stringify({
-                            name: item.name,
-                            path: group.path + item.path
-                          }),
-                          to: group.path + item.path
-                        }
-                      },
-                      [
-                        _c("Icon", { attrs: { type: "md-document" } }),
-                        _vm._v(
-                          "\n                        " +
-                            _vm._s(item.name) +
-                            "\n                    "
+                    return item.name
+                      ? _c(
+                          "MenuItem",
+                          {
+                            key: i,
+                            attrs: {
+                              name: JSON.stringify({
+                                name: item.name,
+                                path: group.path + item.path
+                              }),
+                              to: group.path + item.path
+                            }
+                          },
+                          [
+                            _c("Icon", { attrs: { type: "md-document" } }),
+                            _vm._v(
+                              "\n                    " +
+                                _vm._s(item.name) +
+                                "\n                "
+                            )
+                          ],
+                          1
                         )
-                      ],
-                      1
-                    )
+                      : _vm._e()
                   }),
                   1
                 )

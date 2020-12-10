@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({}[chunkId]||chunkId) + ".js"
+/******/ 		return __webpack_require__.p + "js/chunks/" + ({}[chunkId]||chunkId) + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -82761,6 +82761,8 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+__webpack_require__(/*! ./tools */ "./resources/js/tools.js");
+
 window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -82790,11 +82792,12 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*!**************************************!*\
   !*** ./resources/js/router/index.js ***!
   \**************************************/
-/*! exports provided: routes, router */
+/*! exports provided: HelpRoutes, routes, router */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HelpRoutes", function() { return HelpRoutes; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "routes", function() { return routes; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "router", function() { return router; });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
@@ -82805,14 +82808,29 @@ __webpack_require__.r(__webpack_exports__);
 
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
+/**
+ * 辅助页面，不出现在菜单中
+ * 比如404页面，3级编辑页面等等
+ */
+
+var HelpRoutes = [{
+  path: '/',
+  redirect: '/index'
+}, {
+  path: '/login',
+  name: '登录',
+  component: function component(resolve) {
+    return __webpack_require__.e(/*! AMD require */ 1).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(/*! ../views/login/Login.vue */ "./resources/js/views/login/Login.vue")]; (resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__);}.bind(this)).catch(__webpack_require__.oe);
+  }
+}];
 var routes = [{
   path: '/',
   name: '首页',
   component: function component(resolve) {
-    return __webpack_require__.e(/*! AMD require */ 1).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(/*! ../views/Layout.vue */ "./resources/js/views/Layout.vue")]; (resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__);}.bind(this)).catch(__webpack_require__.oe);
+    return __webpack_require__.e(/*! AMD require */ 0).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(/*! ../views/Layout.vue */ "./resources/js/views/Layout.vue")]; (resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__);}.bind(this)).catch(__webpack_require__.oe);
   },
   children: [{
-    name: '首页',
+    // name: '首页',
     icon: "md-home",
     path: 'index',
     component: _views_Home_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
@@ -82821,12 +82839,12 @@ var routes = [{
     icon: "md-people",
     path: 'user',
     component: function component() {
-      return __webpack_require__.e(/*! import() */ 0).then(__webpack_require__.bind(null, /*! ../views/About.vue */ "./resources/js/views/About.vue"));
+      return __webpack_require__.e(/*! import() */ 2).then(__webpack_require__.bind(null, /*! ../views/About.vue */ "./resources/js/views/About.vue"));
     }
   }]
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
-  routes: routes
+  routes: [].concat(HelpRoutes, routes)
 });
 
 /***/ }),
@@ -82852,6 +82870,303 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
   actions: {},
   modules: {}
 }));
+
+/***/ }),
+
+/***/ "./resources/js/tools.js":
+/*!*******************************!*\
+  !*** ./resources/js/tools.js ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+Date.prototype.Format = function (fmt) {
+  //author: meizz
+  var o = {
+    "M+": this.getMonth() + 1,
+    //月份
+    "d+": this.getDate(),
+    //日
+    "h+": this.getHours(),
+    //小时
+    "m+": this.getMinutes(),
+    //分
+    "s+": this.getSeconds(),
+    //秒
+    "q+": Math.floor((this.getMonth() + 3) / 3),
+    //季度
+    "S": this.getMilliseconds() //毫秒
+
+  };
+  if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+
+  for (var k in o) {
+    if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
+  }
+
+  return fmt;
+};
+/**
+ * Uint8Array转字符串
+ * @return {string}
+ */
+
+
+window.Uint8ArrayToString = function (fileData) {
+  return String.fromCharCode.apply(null, fileData);
+};
+/**
+ * 字符串转Uint8Array
+ * @param str
+ * @returns {Uint8Array}
+ */
+
+
+window.stringToUint8Array = function (str) {
+  var arr = [];
+
+  for (var i = 0, j = str.length; i < j; ++i) {
+    console.log(str[i].charCodeAt());
+    arr.push(str.charCodeAt(i));
+  }
+
+  return new Uint8Array(arr);
+};
+
+window.intToBytes = function (value) {
+  return [(value & 0xFF000000) >> 24, (value & 0x00FF0000) >> 16, (value & 0x0000FF00) >> 8, value & 0x000000FF];
+};
+
+window.bytesToInt = function (ary) {
+  return ary[3] & 0xFF | ary[2] << 8 & 0xFF00 | ary[1] << 16 & 0xFF0000 | ary[0] << 24 & 0xFF000000;
+};
+
+window.upperCaseWord = function (word) {
+  return word.charAt(0).toUpperCase() + word.slice(1);
+};
+/**
+ * 格式化key字段
+ * 首字母大写
+ */
+
+
+window.formatUpperKey = function (key) {
+  var str = '';
+
+  if (key.indexOf('_') !== -1) {
+    //说明有该字符
+    var subArr = key.split('_');
+
+    if (subArr) {
+      var _iterator = _createForOfIteratorHelper(subArr),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var val = _step.value;
+
+          if (val.length > 0) {
+            str += upperCaseWord(val);
+          }
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+    }
+  } else {
+    str = upperCaseWord(key);
+  }
+
+  return str;
+};
+
+window.randomStr = function (length, strs) {
+  if (!length) {
+    return null;
+  }
+
+  if (!strs) {
+    strs = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_';
+  }
+
+  var len = 0;
+  var ranStr = '';
+
+  while (len < length) {
+    var idx = parseInt(Math.random() * (strs.length - 1));
+    ranStr += strs[idx];
+    len++;
+  }
+
+  return ranStr;
+};
+/**
+ * ======================
+ * 下面模拟php重的一些方法
+ * ======================
+ */
+
+
+window.json_encode = function (obj) {
+  if (_typeof(obj) === 'object') {
+    return JSON.stringify(obj);
+  }
+
+  return obj;
+};
+
+window.json_decode = function (str) {
+  if (typeof str === 'string') {
+    return JSON.parse(str);
+  }
+
+  return str;
+};
+
+window.isset = function (value) {
+  return value && !isNaN(value) && value != undefined;
+};
+
+window.isset_num = function (value) {
+  return value != null && !isNaN(value) && value != undefined && value != '';
+};
+
+window.empty = function (obj) {
+  if (typeof obj == 'string') {
+    return obj.length < 1;
+  } else if (obj instanceof Array) {
+    return obj.length < 1;
+  } else if (obj instanceof Object) {
+    return Object.keys(obj).length < 1;
+  }
+
+  return !isset(obj);
+};
+
+window.in_array = function (find, arr) {
+  if (Array.isArray(arr)) {
+    return arr.findIndex(function (n) {
+      return n == find;
+    }) != -1;
+  }
+
+  return false;
+};
+
+window.array = function () {
+  if (isset(arguments) && arguments.length > 0) {
+    return Array.prototype.slice.call(arguments);
+  }
+
+  return [];
+};
+
+window.intval = function (v) {
+  if (isset_num(v)) {
+    return parseInt(v);
+  }
+
+  return 0;
+};
+
+window.strval = function (v) {
+  if (isset(v)) {
+    return v + '';
+  }
+
+  return '';
+};
+
+window.strlen = function (str) {
+  if (isset(str)) {
+    if (typeof str == 'string') {
+      return str.length;
+    } else if (typeof str == 'number') {
+      return "".concat(str).length;
+    }
+  }
+
+  return 0;
+};
+/**
+ * 格式化钱
+ * @param $money 钱币比例转换
+ * @param $scale 比例默认1:100
+ * @param $fixedLen 小数点保留位数，默认跟比例一样，几个0就保留几位
+ * @return string 返回格式化后的字符串
+ */
+
+
+window.money_format = function ($money, $scale, $fixedLen) {
+  if (isset($money) && $money > 0) {
+    if (!$scale) {
+      $scale = 100;
+    }
+
+    if (!$fixedLen) {
+      $fixedLen = ('' + $scale).length - 1;
+    }
+
+    return (intval($money) / $scale).toFixed($fixedLen);
+  }
+
+  if (isset($money) && $money < 0) {
+    if (!$scale) {
+      $scale = 100;
+    }
+
+    if (!$fixedLen) {
+      $fixedLen = ('' + $scale).length - 1;
+    }
+
+    return (intval($money) / $scale).toFixed($fixedLen);
+  }
+
+  return "0";
+};
+
+window.copy = function (data) {
+  console.log(data);
+  var oInput = document.createElement('input');
+  oInput.value = data;
+  document.body.appendChild(oInput);
+  oInput.select(); // 选择对象;
+
+  document.execCommand("Copy"); // 执行浏览器复制命令
+
+  oInput.remove();
+};
+/**
+ * 参数序列化为proto
+ */
+
+
+window.proto_merge = function (CS, params) {
+  if (!empty(params) && typeof CS == 'function') {
+    var pb = new CS();
+
+    for (var key in params) {
+      if (typeof pb["set".concat(key)] == 'function') {
+        pb["set".concat(key)](params[key]);
+      } else {
+        console.error("param key error : " + key);
+        return;
+      }
+    }
+
+    return pb;
+  }
+};
 
 /***/ }),
 
