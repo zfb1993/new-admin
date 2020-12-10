@@ -32,6 +32,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "login",
   data: function data() {
@@ -210,7 +211,7 @@ var render = function() {
                   },
                   [
                     _c("Input", {
-                      attrs: { "show-password": "", placeholder: "请输入密码" },
+                      attrs: { type: "password", placeholder: "请输入密码" },
                       model: {
                         value: _vm.user.password,
                         callback: function($$v) {

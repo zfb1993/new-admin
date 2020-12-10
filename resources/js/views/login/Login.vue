@@ -9,7 +9,8 @@
                         <Input  v-model="user.name" placeholder="请输入用户名" prefix-icon></Input >
                     </FormItem >
                     <FormItem  id="password" prop="password" label="密码">
-                        <Input  v-model="user.password" show-password placeholder="请输入密码"></Input>
+                        <Input type="password" v-model="user.password" placeholder="请输入密码">
+                        </Input>
                     </FormItem >
                     <FormItem class="el-button">
                         <Button  type="primary" @click="doLogin()">登 录</Button >

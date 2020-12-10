@@ -82796,7 +82796,9 @@ service.interceptors.request.use(function (config) {
   return config;
 }, function (error) {
   //之后如果没token就跳到登录
-  console.log(111);
+  router.push({
+    path: "login"
+  });
 }); //添加response拦截器
 
 service.interceptors.response.use(function (response) {
@@ -82806,10 +82808,12 @@ service.interceptors.response.use(function (response) {
     res.status = response.status;
     res.data = response.data;
     return res;
-  } else {
-    //如果不是200 给出提示
-    console.log(2333);
-  }
+  } else if (response.status == 401) {
+    //如果未登录
+    router.push({
+      path: "login"
+    });
+  } else {}
 }, function (error) {
   if (error.response && error.response.status == 404) {
     //跳转到xx页面

@@ -15,7 +15,9 @@ service.interceptors.request.use(config => {
     return config;
 }, error => {
     //之后如果没token就跳到登录
-    console.log(111)
+    router.push({
+        path: "login",
+    })
 })
 
 //添加response拦截器
@@ -27,8 +29,12 @@ service.interceptors.response.use(
             res.status = response.status;
             res.data = response.data;
             return res;
-        }else{//如果不是200 给出提示
-            console.log(2333)
+        }else if(response.status == 401){//如果未登录
+            router.push({
+                path: "login",
+            })
+        }else{
+
         }
     },
     error => {
