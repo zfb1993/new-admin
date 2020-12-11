@@ -17,13 +17,11 @@ Route::get('/', function () {
     return view('admin');
 });
 Route::group([
-
-    'prefix' => 'web'
-
+    'prefix' => 'web',
 ], function ($router) {
     Route::post('register','Web\AuthController@register');
     Route::post('login', 'Web\AuthController@login');
-    Route::group(['middleware' => 'api'],function (){
+    Route::middleware(['auth:web'])->group(function (){
         Route::post('logout', 'Web\AuthController@logout');
         Route::post('refresh', 'Web\AuthController@refresh');
         Route::post('me', 'Web\AuthController@me');
@@ -32,4 +30,5 @@ Route::group([
         Route::post('category_add','Web\CategoryController@create');
         Route::post('category_list','Web\CategoryController@lists');
     });
+
 });
