@@ -108,7 +108,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "body[data-v-6a4bdfee] {\n  position: absolute;\n  height: 100%;\n  width: 100%;\n}\n.layout[data-v-6a4bdfee] {\n  background: #f5f7f9;\n  position: absolute;\n  border-radius: 4px;\n  overflow: hidden;\n  height: 100%;\n  width: 100%;\n}\n.layout .tarBar[data-v-6a4bdfee] {\n  width: 100%;\n  height: 50px;\n}\n.layout .container[data-v-6a4bdfee] {\n  height: calc(100% - 50px);\n  display: flex;\n}\n.layout .container .menu[data-v-6a4bdfee] {\n  width: 240px;\n  height: 100%;\n}\n.layout .container .menu ul[data-v-6a4bdfee] {\n  height: 100%;\n  background-color: #363e4f;\n}\n.layout .container .content[data-v-6a4bdfee] {\n  width: calc(100% - 240px);\n  padding-left: 30px;\n}\n.ivu-menu-item.ivu-menu-item-active.ivu-menu-item-selected[data-v-6a4bdfee] {\n  color: white !important;\n  background: #2B85FB !important;\n}", ""]);
+exports.push([module.i, "body[data-v-6a4bdfee] {\n  position: absolute;\n  height: 100%;\n  width: 100%;\n}\n.layout[data-v-6a4bdfee] {\n  background: #f5f7f9;\n  position: absolute;\n  border-radius: 4px;\n  overflow: hidden;\n  height: 100%;\n  width: 100%;\n}\n.layout .tarBar[data-v-6a4bdfee] {\n  width: 100%;\n  height: 50px;\n}\n.layout .container[data-v-6a4bdfee] {\n  height: calc(100% - 50px);\n  display: flex;\n}\n.layout .container .menu[data-v-6a4bdfee] {\n  width: 240px;\n  height: 100%;\n}\n.layout .container .menu ul[data-v-6a4bdfee] {\n  height: 100%;\n  background-color: #363e4f;\n}\n.layout .container .content[data-v-6a4bdfee] {\n  width: calc(100% - 240px);\n  /*padding-left: 30px;*/\n  background: white;\n}\n.layout .container .content .view-content[data-v-6a4bdfee] {\n  width: 95%;\n  height: 100%;\n  margin: 30px auto;\n  background: white;\n}\n.ivu-menu-item.ivu-menu-item-active.ivu-menu-item-selected[data-v-6a4bdfee] {\n  color: white !important;\n  background: #2B85FB !important;\n}", ""]);
 // Exports
 module.exports = exports;
 
@@ -126,7 +126,7 @@ module.exports = exports;
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, ".top[data-v-7e84ac86] {\n  height: 70px;\n  width: 100%;\n  display: flex;\n}\n.top .left[data-v-7e84ac86] {\n  background-color: #363e4f;\n  width: 240px;\n  height: 100%;\n}\n.top .right[data-v-7e84ac86] {\n  height: 100%;\n  width: calc(100% - 240px);\n  border-bottom: 1px solid #e6e6e6;\n  display: flex;\n  align-items: center;\n}", ""]);
+exports.push([module.i, ".top[data-v-7e84ac86] {\n  height: 70px;\n  width: 100%;\n  display: flex;\n}\n.top .left[data-v-7e84ac86] {\n  background-color: #363e4f;\n  width: 240px;\n  height: 100%;\n}\n.top .right[data-v-7e84ac86] {\n  height: 100%;\n  width: calc(100% - 240px);\n  border-bottom: 1px solid #e6e6e6;\n  display: flex;\n  align-items: center;\n  background: white;\n}", ""]);
 // Exports
 module.exports = exports;
 
@@ -275,7 +275,10 @@ var render = function() {
                 staticStyle: { "margin-bottom": "50px", height: "fit-content" }
               },
               [
-                _c("router-view", { attrs: { pageSizeOpts: _vm.pageSizeOpts } })
+                _c("router-view", {
+                  staticClass: "view-content",
+                  attrs: { pageSizeOpts: _vm.pageSizeOpts }
+                })
               ],
               1
             )
@@ -313,7 +316,7 @@ var render = function() {
     _c("div", { staticClass: "left" }),
     _vm._v(" "),
     _c("div", { staticClass: "right" }, [
-      _c("h1", { staticStyle: { "margin-left": "50px" } }, [
+      _c("h1", { staticStyle: { "margin-left": "45px" } }, [
         _vm._v(_vm._s(_vm.$route.name))
       ])
     ])

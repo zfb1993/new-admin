@@ -15,7 +15,19 @@ const api = {
     },
     getArticle(data){
         return get('/articleList',data)
-    }
+    },
+    createTag(data){
+        return post('/tag_add',data)
+    },
+    getTags(data){
+        return post('/tag_list',data)
+    },
+    createCategory(data){
+        return post('/category_add',data)
+    },
+    getCategories(data){
+        return post('/category_list',data)
+    },
 }
 
 

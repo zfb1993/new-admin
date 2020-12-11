@@ -2,13 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="05756032-9271-4a4b-bec6-b7902d55d6f2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Web/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Web/AuthController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/auth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/chunks/0.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/chunks/0.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/axios/http.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/axios/http.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/Layout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/Layout.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/tags/list.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/tags/list.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/views/widgets/TopBar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/widgets/TopBar.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,7 +185,7 @@
       <updated>1607410126988</updated>
       <workItem from="1607410130400" duration="975000" />
       <workItem from="1607412178694" duration="25741000" />
-      <workItem from="1607653202127" duration="16878000" />
+      <workItem from="1607653202127" duration="20540000" />
     </task>
     <servers />
   </component>

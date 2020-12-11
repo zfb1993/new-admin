@@ -18,7 +18,7 @@
             </div>
             <div class="content">
                 <Content style="margin-bottom:50px;height:fit-content">
-                    <router-view  :pageSizeOpts="pageSizeOpts"></router-view>
+                    <router-view class="view-content" :pageSizeOpts="pageSizeOpts"></router-view>
                 </Content>
             </div>
         </div>
@@ -89,7 +89,14 @@
             }
             .content{
                 width: calc(100% - 240px);
-                padding-left: 30px;
+                /*padding-left: 30px;*/
+                background: white;
+                .view-content{
+                    width: 95%;
+                    height: 100%;
+                    margin: 30px auto;
+                    background: white;
+                }
             }
         }
     }

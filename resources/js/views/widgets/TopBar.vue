@@ -2,7 +2,7 @@
     <div class="top">
         <div class="left"></div>
         <div class="right">
-            <h1 style="margin-left: 50px;">{{$route.name}}</h1>
+            <h1 style="margin-left: 45px;">{{$route.name}}</h1>
         </div>
     </div>
 </template>
@@ -29,6 +29,7 @@ export default {
             border-bottom: 1px solid #e6e6e6;
             display: flex;
             align-items: center;
+            background: white;
         }
     }
 </style>

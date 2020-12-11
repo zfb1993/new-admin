@@ -2164,8 +2164,92 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "list"
+  name: "categoryList",
+  data: function data() {
+    var _this = this;
+
+    return {
+      columns7: [{
+        title: 'Name',
+        key: 'name',
+        render: function render(h, params) {
+          return h('div', [h('Icon', {
+            props: {
+              type: 'person'
+            }
+          }), h('strong', params.row.name)]);
+        }
+      }, {
+        title: 'Age',
+        key: 'age'
+      }, {
+        title: 'Address',
+        key: 'address'
+      }, {
+        title: 'Action',
+        key: 'action',
+        width: 150,
+        align: 'center',
+        render: function render(h, params) {
+          return h('div', [h('Button', {
+            props: {
+              type: 'primary',
+              size: 'small'
+            },
+            style: {
+              marginRight: '5px'
+            },
+            on: {
+              click: function click() {
+                _this.show(params.index);
+              }
+            }
+          }, 'View'), h('Button', {
+            props: {
+              type: 'error',
+              size: 'small'
+            },
+            on: {
+              click: function click() {
+                _this.remove(params.index);
+              }
+            }
+          }, 'Delete')]);
+        }
+      }],
+      data6: [{
+        name: 'John Brown',
+        age: 18,
+        address: 'New York No. 1 Lake Park'
+      }, {
+        name: 'Jim Green',
+        age: 24,
+        address: 'London No. 1 Lake Park'
+      }, {
+        name: 'Joe Black',
+        age: 30,
+        address: 'Sydney No. 1 Lake Park'
+      }, {
+        name: 'Jon Snow',
+        age: 26,
+        address: 'Ottawa No. 2 Lake Park'
+      }]
+    };
+  },
+  methods: {
+    show: function show(index) {
+      this.$Modal.info({
+        title: 'User Info',
+        content: "Name\uFF1A".concat(this.data6[index].name, "<br>Age\uFF1A").concat(this.data6[index].age, "<br>Address\uFF1A").concat(this.data6[index].address)
+      });
+    },
+    remove: function remove(index) {
+      this.data6.splice(index, 1);
+    }
+  }
 });
 
 /***/ }),
@@ -66463,7 +66547,15 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("分类列表")])
+  return _c(
+    "div",
+    [
+      _c("Table", {
+        attrs: { border: "", columns: _vm.columns7, data: _vm.data6 }
+      })
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -83271,6 +83363,18 @@ var api = {
   },
   getArticle: function getArticle(data) {
     return Object(_axios__WEBPACK_IMPORTED_MODULE_0__["get"])('/articleList', data);
+  },
+  createTag: function createTag(data) {
+    return Object(_axios__WEBPACK_IMPORTED_MODULE_0__["post"])('/tag_add', data);
+  },
+  getTags: function getTags(data) {
+    return Object(_axios__WEBPACK_IMPORTED_MODULE_0__["post"])('/tag_list', data);
+  },
+  createCategory: function createCategory(data) {
+    return Object(_axios__WEBPACK_IMPORTED_MODULE_0__["post"])('/category_add', data);
+  },
+  getCategories: function getCategories(data) {
+    return Object(_axios__WEBPACK_IMPORTED_MODULE_0__["post"])('/category_list', data);
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = (api);
