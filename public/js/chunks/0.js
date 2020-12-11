@@ -89,6 +89,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'TopBar'
 });
@@ -124,7 +126,7 @@ module.exports = exports;
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, ".top[data-v-7e84ac86] {\n  height: 70px;\n  width: 100%;\n  display: flex;\n}\n.top .left[data-v-7e84ac86] {\n  background-color: #363e4f;\n  width: 240px;\n  height: 100%;\n}\n.top .right[data-v-7e84ac86] {\n  height: 100%;\n  width: calc(100% - 240px);\n  border-bottom: 1px solid #e6e6e6;\n}", ""]);
+exports.push([module.i, ".top[data-v-7e84ac86] {\n  height: 70px;\n  width: 100%;\n  display: flex;\n}\n.top .left[data-v-7e84ac86] {\n  background-color: #363e4f;\n  width: 240px;\n  height: 100%;\n}\n.top .right[data-v-7e84ac86] {\n  height: 100%;\n  width: calc(100% - 240px);\n  border-bottom: 1px solid #e6e6e6;\n  display: flex;\n  align-items: center;\n}", ""]);
 // Exports
 module.exports = exports;
 
@@ -307,20 +309,17 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "top" }, [
-      _c("div", { staticClass: "left" }),
-      _vm._v(" "),
-      _c("div", { staticClass: "right" })
+  return _c("div", { staticClass: "top" }, [
+    _c("div", { staticClass: "left" }),
+    _vm._v(" "),
+    _c("div", { staticClass: "right" }, [
+      _c("h1", { staticStyle: { "margin-left": "50px" } }, [
+        _vm._v(_vm._s(_vm.$route.name))
+      ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 

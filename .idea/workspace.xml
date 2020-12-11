@@ -2,17 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="05756032-9271-4a4b-bec6-b7902d55d6f2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Web/ArticleController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Web/CategoryController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Web/TagController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Model/Article.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Model/Category.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Model/Tag.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/chunks/0.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/chunks/0.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/views/articles/detail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/articles/detail.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/views/articles/list.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/articles/list.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/views/categories/detail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/categories/detail.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/views/categories/list.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/categories/list.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/views/tags/detail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/tags/detail.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/views/tags/list.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/tags/list.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/chunks/1.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/chunks/1.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/views/widgets/TopBar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/views/widgets/TopBar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,7 +157,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/js" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="E:\PhpStorm 2019.3.4\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
@@ -188,6 +190,7 @@
       <updated>1607410126988</updated>
       <workItem from="1607410130400" duration="975000" />
       <workItem from="1607412178694" duration="25741000" />
+      <workItem from="1607653202127" duration="9742000" />
     </task>
     <servers />
   </component>
@@ -195,6 +198,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1607666619597">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1607666619597" />
     <state x="560" y="104" key="CommitChangelistDialog2" timestamp="1607565282353">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -203,10 +210,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1607419481440" />
-    <state x="776" y="443" key="NewPhpFileDialog" timestamp="1607505285471">
+    <state x="776" y="443" key="NewPhpFileDialog" timestamp="1607659783801">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="776" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1607505285471" />
+    <state x="776" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1607659783801" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1607564933826">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

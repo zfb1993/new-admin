@@ -1,7 +1,9 @@
 <template>
     <div class="top">
         <div class="left"></div>
-        <div class="right"></div>
+        <div class="right">
+            <h1 style="margin-left: 50px;">{{$route.name}}</h1>
+        </div>
     </div>
 </template>
 
@@ -25,6 +27,8 @@ export default {
             height: 100%;
             width: calc(100% - 240px);
             border-bottom: 1px solid #e6e6e6;
+            display: flex;
+            align-items: center;
         }
     }
 </style>
