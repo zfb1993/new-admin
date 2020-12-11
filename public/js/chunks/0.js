@@ -124,7 +124,7 @@ module.exports = exports;
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, ".top[data-v-7e84ac86] {\n  height: 50px;\n  width: 100%;\n}\n.top .left[data-v-7e84ac86] {\n  background-color: #363e4f;\n  width: 240px;\n  height: 100%;\n}\n.top .right[data-v-7e84ac86] {\n  height: 100%;\n  width: calc(100% - 240px);\n}", ""]);
+exports.push([module.i, ".top[data-v-7e84ac86] {\n  height: 70px;\n  width: 100%;\n  display: flex;\n}\n.top .left[data-v-7e84ac86] {\n  background-color: #363e4f;\n  width: 240px;\n  height: 100%;\n}\n.top .right[data-v-7e84ac86] {\n  height: 100%;\n  width: calc(100% - 240px);\n  border-bottom: 1px solid #e6e6e6;\n}", ""]);
 // Exports
 module.exports = exports;
 

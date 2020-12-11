@@ -13,8 +13,9 @@ export default {
 
 <style lang="scss" scoped>
     .top{
-        height: 50px;
+        height: 70px;
         width: 100%;
+        display: flex;
         .left{
             background-color: #363e4f;
             width: 240px;
@@ -23,6 +24,7 @@ export default {
         .right{
             height: 100%;
             width: calc(100% - 240px);
+            border-bottom: 1px solid #e6e6e6;
         }
     }
 </style>

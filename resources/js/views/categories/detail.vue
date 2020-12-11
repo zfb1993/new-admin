@@ -1,5 +1,5 @@
 <template>
-    $END$
+    <div>分类详情</div>
 </template>
 
 <script>

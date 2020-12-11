@@ -1,6 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import ArticleDetail from '../views/articles/detail.vue'
+import ArticleList from '../views/articles/list.vue'
+import TagDetail from '../views/tags/detail.vue'
+import TagList from '../views/tags/list.vue'
+import CategoryDetail from '../views/categories/detail.vue'
+import CategoryList from '../views/categories/list.vue'
 
 Vue.use(VueRouter)
 
@@ -23,7 +29,7 @@ export const HelpRoutes = [
 export const routes = [
     {
         path: '/',
-        name: '首页',
+        name: '标签管理',
         component:resolve => require(['../views/Layout.vue'],resolve),
         children:[
             {
@@ -33,29 +39,16 @@ export const routes = [
                 component: Home,
             },
             {
-                name:'子页',
-                icon:"md-people",
-                path: 'user',
-                component: () => import('../views/About.vue'),
-            },
-        ],
-    },
-    {
-        path: '/',
-        name: '标签管理',
-        component:resolve => require(['../views/Layout.vue'],resolve),
-        children:[
-            {
                 name: '标签列表',
                 icon:"ios-bookmark",
-                path: 'index',
-                component: Home,
+                path: 'tagList',
+                component: TagList,
             },
             {
                 name:'新建标签',
                 icon:"ios-bookmark",
-                path: 'user',
-                component: () => import('../views/About.vue'),
+                path: 'tagDetail',
+                component: TagDetail,
             },
         ],
     },
@@ -67,14 +60,14 @@ export const routes = [
             {
                 name: '分类列表',
                 icon:"logo-buffer",
-                path: 'index',
-                component: Home,
+                path: 'categoryList',
+                component: CategoryList,
             },
             {
                 name:'新建分类',
                 icon:"logo-buffer",
-                path: 'user',
-                component: () => import('../views/About.vue'),
+                path: 'categoryDetail',
+                component: CategoryDetail,
             },
         ],
     },
@@ -86,14 +79,14 @@ export const routes = [
             {
                 name: '文章列表',
                 icon:"md-book",
-                path: 'index',
-                component: Home,
+                path: 'articleList',
+                component: ArticleList,
             },
             {
                 name:'新建文章',
                 icon:"md-book",
-                path: 'user',
-                component: () => import('../views/About.vue'),
+                path: 'articleDetail',
+                component: ArticleDetail,
             },
         ],
     },
