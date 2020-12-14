@@ -1,6 +1,32 @@
 <template>
     <div>
-        <Table border :columns="columns7" :data="data6"></Table>
+        <div class="m10">
+            <Button type="primary" @click="getList">刷新</Button>
+            <Button type="success" @click="getList">新增</Button>
+        </div>
+        <Table border :columns="columns" :data="data" :loading="loading"></Table>
+        <Modal
+            v-model="modalShow"
+            title="编辑"
+            @on-ok="edit"
+            @on-cancel="cancel">
+            <Form :model="formItem" :label-width="80">
+                <FormItem label="标签名">
+                    <Input v-model="formItem.name" placeholder="请填写标签名"></Input>
+                </FormItem>
+            </Form>
+        </Modal>
+        <Modal
+            v-model="addShow"
+            title="新增"
+            @on-ok="add"
+            @on-cancel="cancel">
+            <Form :model="formItem" :label-width="80">
+                <FormItem label="标签名">
+                    <Input v-model="formItem.name" placeholder="请填写标签名"></Input>
+                </FormItem>
+            </Form>
+        </Modal>
     </div>
 </template>
 
@@ -10,31 +36,32 @@
         name: "categoryList",
         data () {
             return {
-                columns7: [
+                loading: false,
+                modalShow: false,
+                modalTitle: '',
+                addShow: false,
+                formItem:{
+                    name:''
+                },
+                columns: [
                     {
-                        title: 'Name',
-                        key: 'name',
-                        render: (h, params) => {
-                            return h('div', [
-                                h('Icon', {
-                                    props: {
-                                        type: 'person'
-                                    }
-                                }),
-                                h('strong', params.row.name)
-                            ]);
-                        }
+                        title: 'id',
+                        key: 'id',
                     },
                     {
-                        title: 'Age',
-                        key: 'age'
+                        title: '标签名',
+                        key: 'name'
                     },
                     {
-                        title: 'Address',
-                        key: 'address'
+                        title: '创建时间',
+                        key: 'created_at'
                     },
                     {
-                        title: 'Action',
+                        title: '修改时间',
+                        key: 'updated_at'
+                    },
+                    {
+                        title: '操作',
                         key: 'action',
                         width: 150,
                         align: 'center',
@@ -50,10 +77,10 @@
                                     },
                                     on: {
                                         click: () => {
-                                            this.show(params.index)
+                                            this.show(params)
                                         }
                                     }
-                                }, 'View'),
+                                }, '编辑'),
                                 h('Button', {
                                     props: {
                                         type: 'error',
@@ -64,49 +91,38 @@
                                             this.remove(params.index)
                                         }
                                     }
-                                }, 'Delete')
+                                }, '删除')
                             ]);
                         }
                     }
                 ],
-                data6: [
-                    {
-                        name: 'John Brown',
-                        age: 18,
-                        address: 'New York No. 1 Lake Park'
-                    },
-                    {
-                        name: 'Jim Green',
-                        age: 24,
-                        address: 'London No. 1 Lake Park'
-                    },
-                    {
-                        name: 'Joe Black',
-                        age: 30,
-                        address: 'Sydney No. 1 Lake Park'
-                    },
-                    {
-                        name: 'Jon Snow',
-                        age: 26,
-                        address: 'Ottawa No. 2 Lake Park'
-                    }
-                ]
+                data: []
             }
         },
         methods: {
-            show (index) {
-                this.$Modal.info({
-                    title: 'User Info',
-                    content: `Name：${this.data6[index].name}<br>Age：${this.data6[index].age}<br>Address：${this.data6[index].address}`
-                })
+            show (param) {
+                this.modalShow = true
+                this.modalTitle = '编辑'
+                this.formItem.name = param.row.name
             },
             remove (index) {
-                this.data6.splice(index, 1);
+
             },
             getList(){
+                this.loading = true
                 api.getTags().then(res=>{
-                    console.log(res)
+                    this.data = res.data.data
+                    this.loading = false
                 });
+            },
+            edit(){
+
+            },
+            add(){
+
+            },
+            cancel(){
+
             }
         },
         mounted() {
@@ -116,5 +132,7 @@
 </script>
 
 <style scoped>
-
+    .m10{
+        margin-bottom: 10px;
+    }
 </style>
