@@ -25,10 +25,15 @@ Route::group([
         Route::post('logout', 'Web\AuthController@logout');
         Route::post('refresh', 'Web\AuthController@refresh');
         Route::post('me', 'Web\AuthController@me');
+
         Route::post('tag_add','Web\TagController@create');
+        Route::post('tag_edit','Web\TagController@edit');
         Route::post('tag_list','Web\TagController@lists');
+
         Route::post('category_add','Web\CategoryController@create');
         Route::post('category_list','Web\CategoryController@lists');
+        Route::post('category_edit','Web\CategoryController@edit');
+
     });
 
 });

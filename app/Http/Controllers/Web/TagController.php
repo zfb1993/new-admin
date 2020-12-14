@@ -9,10 +9,14 @@ class TagController extends Controller
 {
     public function create(Request $request)
     {
-        $validatedData = $request->validate([
+        $request->validate([
             'name' => 'required|unique:tags|max:255',
         ]);
-        return Tag::create(['name'=>$request->name]);
+        $res = Tag::create(['name'=>$request->name]);
+        if ($res){
+            return ['state'=>0,'message'=>'操作成功'];
+        }
+        return ['state'=>1,'message'=>'操作失败'];
     }
 
     public function lists()
@@ -20,8 +24,18 @@ class TagController extends Controller
         return Tag::paginate(15);
     }
 
-    public function edit()
+    public function edit(Request $request)
     {
-
+        $request->validate([
+            'id'   => 'required',
+            'name' => 'required|unique:tags|max:255',
+        ]);
+        $model = Tag::find($request->id);
+        if ($model){
+            $model->name = $request->name;
+            $model->save();
+            return ['state'=>0,'message'=>'操作成功'];
+        }
+        return ['state'=>1,'message'=>'操作失败'];
     }
 }

@@ -22,11 +22,17 @@ const api = {
     getTags(data){
         return post('/tag_list',data)
     },
+    editTags(data){
+        return post('/tag_edit',data)
+    },
     createCategory(data){
         return post('/category_add',data)
     },
     getCategories(data){
         return post('/category_list',data)
+    },
+    editCategory(data){
+        return post('/category_edit',data)
     },
 }
 

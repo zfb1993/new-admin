@@ -2,7 +2,7 @@
     <div>
         <div class="m10">
             <Button type="primary" @click="getList">刷新</Button>
-            <Button type="success" @click="getList">新增</Button>
+            <Button type="success" @click="addModalShow">新增</Button>
         </div>
         <Table border :columns="columns" :data="data" :loading="loading"></Table>
         <Modal
@@ -102,7 +102,7 @@
         methods: {
             show (param) {
                 this.modalShow = true
-                this.modalTitle = '编辑'
+                this.formItem.id = param.row.id
                 this.formItem.name = param.row.name
             },
             remove (index) {
@@ -113,16 +113,31 @@
                 api.getTags().then(res=>{
                     this.data = res.data.data
                     this.loading = false
+                    this.$Message.success('刷新成功');
                 });
             },
             edit(){
-
+                api.editTags(this.formItem).then(res=>{
+                    if(res.data.state == 0){
+                        this.$Message.success('编辑成功');
+                        this.getList()
+                    }
+                })
             },
             add(){
-
+                let data = {name:this.formItem.name}
+                api.createTag(data).then(res=>{
+                    if(res.data.state == 0){
+                        this.$Message.success('新增成功');
+                        this.getList()
+                    }
+                })
             },
             cancel(){
 
+            },
+            addModalShow(){
+                this.addShow = true
             }
         },
         mounted() {

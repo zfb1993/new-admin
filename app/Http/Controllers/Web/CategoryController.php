@@ -12,7 +12,11 @@ class CategoryController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|unique:tags|max:255',
         ]);
-        return Category::create(['name'=>$request->name]);
+        $res = Category::create(['name'=>$request->name]);
+        if ($res){
+            return ['state'=>0,'message'=>'操作成功'];
+        }
+        return ['state'=>1,'message'=>'操作失败'];
     }
 
     /**
@@ -24,8 +28,18 @@ class CategoryController extends Controller
         return Category::paginate(15);
     }
 
-    public function edit()
+    public function edit(Request $request)
     {
-
+        $request->validate([
+            'id'   => 'required',
+            'name' => 'required|unique:tags|max:255',
+        ]);
+        $model = Category::find($request->id);
+        if ($model){
+            $model->name = $request->name;
+            $model->save();
+            return ['state'=>0,'message'=>'操作成功'];
+        }
+        return ['state'=>1,'message'=>'操作失败'];
     }
 }

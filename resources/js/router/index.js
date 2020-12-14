@@ -44,12 +44,6 @@ export const routes = [
                 path: 'tagList',
                 component: TagList,
             },
-            {
-                name:'新建标签',
-                icon:"ios-bookmark",
-                path: 'tagDetail',
-                component: TagDetail,
-            },
         ],
     },
     {
@@ -62,12 +56,6 @@ export const routes = [
                 icon:"logo-buffer",
                 path: 'categoryList',
                 component: CategoryList,
-            },
-            {
-                name:'新建分类',
-                icon:"logo-buffer",
-                path: 'categoryDetail',
-                component: CategoryDetail,
             },
         ],
     },
