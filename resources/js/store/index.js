@@ -5,8 +5,12 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
+        Token:null,
     },
     mutations: {
+        RefreshToken(state, info) {
+            state.Token = info;
+        },
     },
     actions: {
     },

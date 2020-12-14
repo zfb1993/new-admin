@@ -2160,12 +2160,14 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _axios_http_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../axios/http.js */ "./resources/js/axios/http.js");
 //
 //
 //
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "categoryList",
   data: function data() {
@@ -2248,7 +2250,15 @@ __webpack_require__.r(__webpack_exports__);
     },
     remove: function remove(index) {
       this.data6.splice(index, 1);
+    },
+    getList: function getList() {
+      _axios_http_js__WEBPACK_IMPORTED_MODULE_0__["default"].getTags().then(function (res) {
+        console.log(res);
+      });
     }
+  },
+  mounted: function mounted() {
+    this.getList();
   }
 });
 
@@ -83129,11 +83139,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./config */ "./resources/js/axios/config.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store */ "./resources/js/store/index.js");
 
 
-var token = localStorage.token;
 
-axios__WEBPACK_IMPORTED_MODULE_2___default.a.defaults.headers['authorization'] = "Bearer ".concat(token);
+
+axios__WEBPACK_IMPORTED_MODULE_2___default.a.defaults.headers.common = {
+  'Authorization': "bearer ".concat(_store__WEBPACK_IMPORTED_MODULE_3__["default"].state.Token)
+};
 axios__WEBPACK_IMPORTED_MODULE_2___default.a.defaults.baseURL = _config__WEBPACK_IMPORTED_MODULE_1__["default"]; // 请求的默认域名
 //创建axios实例
 
@@ -83183,29 +83196,31 @@ service.interceptors.response.use(function (response) {
 
 function get(url) {
   var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  params.t = new Date().getTime(); //get方法加一个时间参数,解决ie下可能缓存问题.
-
-  return service({
-    url: url,
-    method: 'get',
-    headers: {},
-    params: params
+  return service.get(url, data, {
+    headers: {
+      'Authorization': "Bearer ".concat(_store__WEBPACK_IMPORTED_MODULE_3__["default"].state.Token)
+    }
   });
 } //封装post请求
 
 function post(url) {
   var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
   //默认配置
-  var sendObject = {
-    url: url,
-    method: "post",
+  // let sendObject = {
+  //     url: url,
+  //     method: "post",
+  //     headers: {
+  //         'Content-Type': 'application/json;charset=UTF-8'
+  //     },
+  //     data: data
+  // };
+  // console.log(service)
+  // sendObject.data = JSON.stringify(data);
+  return service.post(url, data, {
     headers: {
-      'Content-Type': 'application/json;charset=UTF-8'
-    },
-    data: data
-  };
-  sendObject.data = JSON.stringify(data);
-  return service(sendObject);
+      'Authorization': "Bearer ".concat(_store__WEBPACK_IMPORTED_MODULE_3__["default"].state.Token)
+    }
+  });
 }
 function filePost(url) {
   var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
@@ -83541,8 +83556,14 @@ __webpack_require__.r(__webpack_exports__);
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__["default"]);
 /* harmony default export */ __webpack_exports__["default"] = (new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
-  state: {},
-  mutations: {},
+  state: {
+    Token: null
+  },
+  mutations: {
+    RefreshToken: function RefreshToken(state, info) {
+      state.Token = info;
+    }
+  },
   actions: {},
   modules: {}
 }));

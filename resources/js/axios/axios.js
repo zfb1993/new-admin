@@ -1,8 +1,9 @@
 import {router as Router} from '../router'
 import baseUrl from "./config";
-const token = localStorage.token
 import axios from 'axios'
-axios.defaults.headers['authorization'] = `Bearer ${token}`
+import store from "../store";
+
+axios.defaults.headers.common = {'Authorization': `bearer ${store.state.Token}`}
 axios.defaults.baseURL = baseUrl; // 请求的默认域名
 
 //创建axios实例
@@ -52,29 +53,31 @@ service.interceptors.response.use(
 //封装get接口
 // params={} 是设置默认值
 export function get(url, params = {}) {
-    params.t = new Date().getTime(); //get方法加一个时间参数,解决ie下可能缓存问题.
-    return service({
-        url: url,
-        method: 'get',
+    return service.get(url, data, {
         headers: {
-        },
-        params
+            'Authorization': `Bearer ${store.state.Token}`
+        }
     })
 }
 
 //封装post请求
 export function post(url, data = {}) {
     //默认配置
-    let sendObject = {
-        url: url,
-        method: "post",
+    // let sendObject = {
+    //     url: url,
+    //     method: "post",
+    //     headers: {
+    //         'Content-Type': 'application/json;charset=UTF-8'
+    //     },
+    //     data: data
+    // };
+    // console.log(service)
+    // sendObject.data = JSON.stringify(data);
+    return service.post(url, data, {
         headers: {
-            'Content-Type': 'application/json;charset=UTF-8'
-        },
-        data: data
-    };
-    sendObject.data = JSON.stringify(data);
-    return service(sendObject)
+            'Authorization': `Bearer ${store.state.Token}`
+        }
+    })
 }
 export function filePost(url, data = {}) {
     //默认配置

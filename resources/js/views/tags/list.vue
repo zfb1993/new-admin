@@ -5,6 +5,7 @@
 </template>
 
 <script>
+    import api from '../../axios/http.js'
     export default {
         name: "categoryList",
         data () {
@@ -101,7 +102,15 @@
             },
             remove (index) {
                 this.data6.splice(index, 1);
+            },
+            getList(){
+                api.getTags().then(res=>{
+                    console.log(res)
+                });
             }
+        },
+        mounted() {
+            this.getList()
         }
     }
 </script>
