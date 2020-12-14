@@ -80,7 +80,7 @@ __webpack_require__.r(__webpack_exports__);
         // this.$router.push({ path: "/personal" });
         this.$api.userLogin(this.user).then(function (res) {
           if (res.status == 200) {
-            _this.$store.commit('RefreshToken', res.data.access_token);
+            localStorage.Token = res.data.access_token;
 
             _this.$router.push({
               path: "index"

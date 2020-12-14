@@ -2049,9 +2049,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Index"
+  name: "Index",
+  mounted: function mounted() {
+    if (localStorage.Token == null) {
+      this.$router.push({
+        path: "login"
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -83139,14 +83145,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./config */ "./resources/js/axios/config.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store */ "./resources/js/store/index.js");
 
 
 
-
-axios__WEBPACK_IMPORTED_MODULE_2___default.a.defaults.headers.common = {
-  'Authorization': "bearer ".concat(_store__WEBPACK_IMPORTED_MODULE_3__["default"].state.Token)
-};
 axios__WEBPACK_IMPORTED_MODULE_2___default.a.defaults.baseURL = _config__WEBPACK_IMPORTED_MODULE_1__["default"]; // 请求的默认域名
 //创建axios实例
 
@@ -83198,7 +83199,7 @@ function get(url) {
   var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
   return service.get(url, data, {
     headers: {
-      'Authorization': "Bearer ".concat(_store__WEBPACK_IMPORTED_MODULE_3__["default"].state.Token)
+      Authorization: "Bearer ".concat(localStorage.Token)
     }
   });
 } //封装post请求
@@ -83206,19 +83207,9 @@ function get(url) {
 function post(url) {
   var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
   //默认配置
-  // let sendObject = {
-  //     url: url,
-  //     method: "post",
-  //     headers: {
-  //         'Content-Type': 'application/json;charset=UTF-8'
-  //     },
-  //     data: data
-  // };
-  // console.log(service)
-  // sendObject.data = JSON.stringify(data);
   return service.post(url, data, {
     headers: {
-      'Authorization': "Bearer ".concat(_store__WEBPACK_IMPORTED_MODULE_3__["default"].state.Token)
+      Authorization: "Bearer ".concat(localStorage.Token)
     }
   });
 }

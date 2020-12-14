@@ -56,7 +56,7 @@
                     // this.$router.push({ path: "/personal" });
                     this.$api.userLogin(this.user).then(res => {
                         if(res.status == 200){
-                            this.$store.commit('RefreshToken',res.data.access_token)
+                            localStorage.Token = res.data.access_token
                             this.$router.push({
                                 path: "index",
                             });

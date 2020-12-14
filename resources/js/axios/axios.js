@@ -1,9 +1,7 @@
 import {router as Router} from '../router'
 import baseUrl from "./config";
 import axios from 'axios'
-import store from "../store";
 
-axios.defaults.headers.common = {'Authorization': `bearer ${store.state.Token}`}
 axios.defaults.baseURL = baseUrl; // 请求的默认域名
 
 //创建axios实例
@@ -53,30 +51,16 @@ service.interceptors.response.use(
 //封装get接口
 // params={} 是设置默认值
 export function get(url, params = {}) {
-    return service.get(url, data, {
-        headers: {
-            'Authorization': `Bearer ${store.state.Token}`
-        }
+    return service.get(url,data,{
+        headers: { Authorization: `Bearer ${localStorage.Token}` }
     })
 }
 
 //封装post请求
 export function post(url, data = {}) {
     //默认配置
-    // let sendObject = {
-    //     url: url,
-    //     method: "post",
-    //     headers: {
-    //         'Content-Type': 'application/json;charset=UTF-8'
-    //     },
-    //     data: data
-    // };
-    // console.log(service)
-    // sendObject.data = JSON.stringify(data);
-    return service.post(url, data, {
-        headers: {
-            'Authorization': `Bearer ${store.state.Token}`
-        }
+    return service.post(url,data,{
+        headers: { Authorization: `Bearer ${localStorage.Token}` }
     })
 }
 export function filePost(url, data = {}) {
