@@ -25,6 +25,9 @@ const api = {
     editTags(data){
         return post('/tag_edit',data)
     },
+    deleteTag(data){
+        return post('/tag_delete',data)
+    },
     createCategory(data){
         return post('/category_add',data)
     },
@@ -33,6 +36,9 @@ const api = {
     },
     editCategory(data){
         return post('/category_edit',data)
+    },
+    deleteCategory(data){
+        return post('/category_delete',data)
     },
 }
 

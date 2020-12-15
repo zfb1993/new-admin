@@ -88,7 +88,7 @@
                                     },
                                     on: {
                                         click: () => {
-                                            this.remove(params.index)
+                                            this.remove(params)
                                         }
                                     }
                                 }, '删除')
@@ -105,8 +105,23 @@
                 this.formItem.id = param.row.id
                 this.formItem.name = param.row.name
             },
-            remove (index) {
+            remove (param) {
+                this.$Modal.confirm({
+                    title: '删除',
+                    content: '确定要删除么？',
+                    onOk: () => {
+                        let data = {id:param.row.id}
+                        api.deleteCategory(data).then(res=>{
+                            if(res.data.state == 0){
+                                this.$Message.success('删除成功');
+                                this.getList()
+                            }
+                        })
+                    },
+                    onCancel: () => {
 
+                    }
+                });
             },
             getList(){
                 this.loading = true

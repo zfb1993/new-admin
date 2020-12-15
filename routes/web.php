@@ -29,10 +29,12 @@ Route::group([
         Route::post('tag_add','Web\TagController@create');
         Route::post('tag_edit','Web\TagController@edit');
         Route::post('tag_list','Web\TagController@lists');
+        Route::post('tag_delete','Web\TagController@delete');
 
         Route::post('category_add','Web\CategoryController@create');
         Route::post('category_list','Web\CategoryController@lists');
         Route::post('category_edit','Web\CategoryController@edit');
+        Route::post('category_delete','Web\CategoryController@delete');
 
     });
 

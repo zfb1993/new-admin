@@ -42,4 +42,16 @@ class CategoryController extends Controller
         }
         return ['state'=>1,'message'=>'操作失败'];
     }
+
+    public function delete(Request $request)
+    {
+        $request->validate([
+            'id'   => 'required',
+        ]);
+        $res = Category::where(['id'=>$request->id])->delete();
+        if ($res){
+            return ['state'=>0,'msg'=>'删除成功'];
+        }
+        return ['state'=>1,'message'=>'删除失败'];
+    }
 }

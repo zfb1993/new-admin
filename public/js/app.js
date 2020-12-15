@@ -2213,7 +2213,7 @@ __webpack_require__.r(__webpack_exports__);
             },
             on: {
               click: function click() {
-                _this.remove(params.index);
+                _this.remove(params);
               }
             }
           }, '删除')]);
@@ -2228,40 +2228,60 @@ __webpack_require__.r(__webpack_exports__);
       this.formItem.id = param.row.id;
       this.formItem.name = param.row.name;
     },
-    remove: function remove(index) {},
-    getList: function getList() {
+    remove: function remove(param) {
       var _this2 = this;
+
+      this.$Modal.confirm({
+        title: '删除',
+        content: '确定要删除么？',
+        onOk: function onOk() {
+          var data = {
+            id: param.row.id
+          };
+          _axios_http_js__WEBPACK_IMPORTED_MODULE_0__["default"].deleteCategory(data).then(function (res) {
+            if (res.data.state == 0) {
+              _this2.$Message.success('删除成功');
+
+              _this2.getList();
+            }
+          });
+        },
+        onCancel: function onCancel() {}
+      });
+    },
+    getList: function getList() {
+      var _this3 = this;
 
       this.loading = true;
       _axios_http_js__WEBPACK_IMPORTED_MODULE_0__["default"].getCategories().then(function (res) {
-        _this2.data = res.data.data;
-        _this2.loading = false;
+        _this3.data = res.data.data;
+        _this3.loading = false;
 
-        _this2.$Message.success('刷新成功');
+        _this3.$Message.success('刷新成功');
       });
     },
     edit: function edit() {
-      var _this3 = this;
+      var _this4 = this;
 
       _axios_http_js__WEBPACK_IMPORTED_MODULE_0__["default"].editCategories(this.formItem).then(function (res) {
         if (res.data.state == 0) {
-          _this3.$Message.success('编辑成功');
+          _this4.$Message.success('编辑成功');
 
-          _this3.getList();
+          _this4.getList();
         }
       });
     },
     add: function add() {
-      var _this4 = this;
+      var _this5 = this;
 
       var data = {
         name: this.formItem.name
       };
       _axios_http_js__WEBPACK_IMPORTED_MODULE_0__["default"].createCategory(data).then(function (res) {
         if (res.data.state == 0) {
-          _this4.$Message.success('新增成功');
+          _this5.$Message.success('新增成功');
 
-          _this4.getList();
+          _this5.getList();
         }
       });
     },
@@ -2390,7 +2410,7 @@ __webpack_require__.r(__webpack_exports__);
             },
             on: {
               click: function click() {
-                _this.remove(params.index);
+                _this.remove(params);
               }
             }
           }, '删除')]);
@@ -2405,40 +2425,60 @@ __webpack_require__.r(__webpack_exports__);
       this.formItem.id = param.row.id;
       this.formItem.name = param.row.name;
     },
-    remove: function remove(index) {},
-    getList: function getList() {
+    remove: function remove(param) {
       var _this2 = this;
+
+      this.$Modal.confirm({
+        title: '删除',
+        content: '确定要删除么？',
+        onOk: function onOk() {
+          var data = {
+            id: param.row.id
+          };
+          _axios_http_js__WEBPACK_IMPORTED_MODULE_0__["default"].deleteCategory(data).then(function (res) {
+            if (res.data.state == 0) {
+              _this2.$Message.success('删除成功');
+
+              _this2.getList();
+            }
+          });
+        },
+        onCancel: function onCancel() {}
+      });
+    },
+    getList: function getList() {
+      var _this3 = this;
 
       this.loading = true;
       _axios_http_js__WEBPACK_IMPORTED_MODULE_0__["default"].getTags().then(function (res) {
-        _this2.data = res.data.data;
-        _this2.loading = false;
+        _this3.data = res.data.data;
+        _this3.loading = false;
 
-        _this2.$Message.success('刷新成功');
+        _this3.$Message.success('刷新成功');
       });
     },
     edit: function edit() {
-      var _this3 = this;
+      var _this4 = this;
 
       _axios_http_js__WEBPACK_IMPORTED_MODULE_0__["default"].editTags(this.formItem).then(function (res) {
         if (res.data.state == 0) {
-          _this3.$Message.success('编辑成功');
+          _this4.$Message.success('编辑成功');
 
-          _this3.getList();
+          _this4.getList();
         }
       });
     },
     add: function add() {
-      var _this4 = this;
+      var _this5 = this;
 
       var data = {
         name: this.formItem.name
       };
       _axios_http_js__WEBPACK_IMPORTED_MODULE_0__["default"].createTag(data).then(function (res) {
         if (res.data.state == 0) {
-          _this4.$Message.success('新增成功');
+          _this5.$Message.success('新增成功');
 
-          _this4.getList();
+          _this5.getList();
         }
       });
     },
@@ -83883,6 +83923,9 @@ var api = {
   editTags: function editTags(data) {
     return Object(_axios__WEBPACK_IMPORTED_MODULE_0__["post"])('/tag_edit', data);
   },
+  deleteTag: function deleteTag(data) {
+    return Object(_axios__WEBPACK_IMPORTED_MODULE_0__["post"])('/tag_delete', data);
+  },
   createCategory: function createCategory(data) {
     return Object(_axios__WEBPACK_IMPORTED_MODULE_0__["post"])('/category_add', data);
   },
@@ -83891,6 +83934,9 @@ var api = {
   },
   editCategory: function editCategory(data) {
     return Object(_axios__WEBPACK_IMPORTED_MODULE_0__["post"])('/category_edit', data);
+  },
+  deleteCategory: function deleteCategory(data) {
+    return Object(_axios__WEBPACK_IMPORTED_MODULE_0__["post"])('/category_delete', data);
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = (api);
