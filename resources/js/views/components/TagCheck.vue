@@ -16,6 +16,11 @@
             return {
                 tags:[]
             }
+        },
+        methods:{
+            getList(){
+                
+            }
         }
     }
 </script>
