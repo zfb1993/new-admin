@@ -24,4 +24,15 @@ class ArticleController extends Controller
     {
 
     }
+
+    public function uploadImage(Request $request)
+    {
+        $path = $request->file('chatu')->store('articles');
+        $file_names = explode('/',$path);
+        return array_pop($file_names);
+    }
+
+    function browse($file_name){
+        return response()->file(storage_path('app/articles/').$file_name);
+    }
 }

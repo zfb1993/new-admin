@@ -8,7 +8,7 @@ const api = {
         return post('/user',data)
     },
     uploadImage(data){
-        return filePost('/uploadImage',data)
+        return filePost('/upload_image',data)
     },
     postArticle(data){
         return post('/article',data)

@@ -7,6 +7,8 @@
 </template>
 
 <script>
+    import api from "../../axios/http";
+
     export default {
         props:{
 
@@ -19,8 +21,13 @@
         },
         methods:{
             getList(){
-                
+                api.getTags().then(res=>{
+                    this.tags = res.data.data
+                });
             }
+        },
+        mounted() {
+            this.getList()
         }
     }
 </script>
