@@ -125,7 +125,8 @@
             },
             getList(){
                 this.loading = true
-                api.getTags().then(res=>{
+                let data = {isPage:true}
+                api.getTags(data).then(res=>{
                     this.data = res.data.data
                     this.loading = false
                     this.$Message.success('刷新成功');

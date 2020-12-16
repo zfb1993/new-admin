@@ -21,7 +21,12 @@ class TagController extends Controller
 
     public function lists()
     {
-        return Tag::paginate(15);
+        $param = request();
+        if (isset($param->isPage)){
+            return Tag::paginate(15);
+        }else{
+            return Tag::all();
+        }
     }
 
     public function edit(Request $request)

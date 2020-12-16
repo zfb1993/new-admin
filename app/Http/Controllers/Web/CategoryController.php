@@ -25,7 +25,12 @@ class CategoryController extends Controller
      */
     public function lists()
     {
-        return Category::paginate(15);
+        $param = request();
+        if (isset($param->isPage)){
+            return Category::paginate(15);
+        }else{
+            return Category::all();
+        }
     }
 
     public function edit(Request $request)

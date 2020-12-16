@@ -2253,7 +2253,10 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       this.loading = true;
-      _axios_http_js__WEBPACK_IMPORTED_MODULE_0__["default"].getCategories().then(function (res) {
+      var data = {
+        isPage: true
+      };
+      _axios_http_js__WEBPACK_IMPORTED_MODULE_0__["default"].getCategories(data).then(function (res) {
         _this3.data = res.data.data;
         _this3.loading = false;
 
@@ -2450,7 +2453,10 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       this.loading = true;
-      _axios_http_js__WEBPACK_IMPORTED_MODULE_0__["default"].getTags().then(function (res) {
+      var data = {
+        isPage: true
+      };
+      _axios_http_js__WEBPACK_IMPORTED_MODULE_0__["default"].getTags(data).then(function (res) {
         _this3.data = res.data.data;
         _this3.loading = false;
 
