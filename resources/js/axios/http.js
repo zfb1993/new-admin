@@ -10,8 +10,17 @@ const api = {
     uploadImage(data){
         return filePost('/upload_image',data)
     },
-    postArticle(data){
-        return post('/article',data)
+    createArticle(data){
+        return post('/article_add',data)
+    },
+    editArticle(data){
+        return post('/article_edit',data)
+    },
+    deleteArticle(data){
+        return post('/article_delete',data)
+    },
+    getArticles(data){
+        return post('/article_list',data)
     },
     getArticle(data){
         return get('/articleList',data)

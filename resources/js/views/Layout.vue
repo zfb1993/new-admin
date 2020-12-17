@@ -91,6 +91,7 @@
                 width: calc(100% - 240px);
                 /*padding-left: 30px;*/
                 background: white;
+                overflow: auto;
                 .view-content{
                     width: 95%;
                     height: 100%;

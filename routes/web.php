@@ -21,6 +21,7 @@ Route::group([
 ], function ($router) {
     Route::post('register','Web\AuthController@register');
     Route::post('login', 'Web\AuthController@login');
+    Route::get("storage/{file_name}","Web\ArticleController@browse");
     Route::middleware(['auth:web'])->group(function (){
         Route::post('logout', 'Web\AuthController@logout');
         Route::post('refresh', 'Web\AuthController@refresh');
@@ -36,10 +37,12 @@ Route::group([
         Route::post('category_edit','Web\CategoryController@edit');
         Route::post('category_delete','Web\CategoryController@delete');
 
-        Route::post('category_add','Web\CategoryController@create');
+        Route::post('article_add','Web\ArticleController@create');
+        Route::post('article_edit','Web\ArticleController@edit');
+        Route::post('article_list','Web\ArticleController@list');
+        Route::post('article_delete','Web\ArticleController@delete');
 
         Route::post('upload_image','Web\ArticleController@uploadImg');
-        Route::get("storage/{file_name}","Web\ArticleController@browse");
     });
 
 });

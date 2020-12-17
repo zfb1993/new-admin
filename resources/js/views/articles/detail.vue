@@ -1,18 +1,28 @@
 <template>
     <Row>
-        <Form :model="article" :label-width="80">
+        <Form :model="article" :label-width="80" ref="article"  :rules="ruleValidate">
             <Col :span="12">
-                    <FormItem label="文章标题">
+                    <FormItem label="文章标题" prop="title">
                         <Input v-model="article.title" placeholder="文章标题"></Input>
                     </FormItem>
             </Col>
             <Col :span="20">
-                <FormItem label="文章内容">
-                    <mavon-editor v-model="article.content" ref="editor" @imgAdd="$imgAdd" @save="markDownSub"></mavon-editor>
+                <FormItem label="标签" >
+                    <Tags @getTagIds="getTagIds"></Tags>
+                </FormItem>
+            </Col>
+            <Col :span="20">
+                <FormItem label="分类" >
+                    <Categories @getCategory="getCategory"></Categories>
+                </FormItem>
+            </Col>
+            <Col :span="20">
+                <FormItem label="文章内容" prop="value">
+                    <mavon-editor v-model="article.value" ref="editor" @imgAdd="$imgAdd" @save="markDownSub"></mavon-editor>
                 </FormItem>
             </Col>
             <Col :span="20" style="text-align: right;">
-                <Button type="primary" @click="createArticle">提交</Button>
+                <Button type="primary" @click="markDownSub">提交</Button>
             </Col>
         </Form>
     </Row>
@@ -20,30 +30,46 @@
 
 <script>
     import api from "../../axios/http";
+    import Tags from '../components/TagCheck';
+    import Categories from '../components/CategorySelect';
+    import baseUrl from '../../axios/config'
+
     export default {
+        components:{
+          Tags,  Categories
+        },
         name: "detail",
         data(){
             return {
+                ruleValidate: {
+                    title: [
+                        { required: true, message: '标题不能为空', trigger: 'blur' }
+                    ],
+                    value: [
+                        { required: true, message: '内容不能为空', trigger: 'blur' },
+                    ],
+                },
                 article: {
                     title: '',
-                    content: ''
+                    value: '',
+                    tagIds: [],
+                    categoryId: ''
                 }
             }
         },
         methods:{
             markDownSub(){
-                this.$refs.ruleForm.validate(validate=>{
+                this.$refs.article.validate(validate=>{
                     if(validate){
                         let data = {
-                            title:this.title,
-                            content: this.value
+                            title: this.article.title,
+                            article: this.article.value,
+                            tag_id: this.article.tagIds,
+                            category_id: this.article.categoryId,
                         }
-                        api.postArticle(data).then(res=>{
-                            if(res.stauts == 200){
-                                this.$message({
-                                    message: '发布成功~',
-                                    type: 'success'
-                                });
+                        api.createArticle(data).then(res=>{
+                            if(res.data.state == 0){
+                                this.$Message.success('操作成功');
                             }
                         })
                     }else{
@@ -60,8 +86,11 @@
                     this.$refs.editor.$img2Url(pos, baseUrl + '/storage/' + url.data)
                 })
             },
-            createArticle(){
-                console.log(111)
+            getTagIds(value){
+                this.article.tagIds = value
+            },
+            getCategory(value){
+                this.article.categoryId = value
             }
         },
         mounted() {

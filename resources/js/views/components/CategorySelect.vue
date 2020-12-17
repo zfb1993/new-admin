@@ -1,7 +1,12 @@
 <template>
     <div>
-        <Select v-model="category" style="width:200px">
-            <Option v-for="(category,index)in categories" :value="category.id" :key="index">{{ category.name }}</Option>
+        <Select v-model="category" style="width:200px;" @on-change="passVal">
+            <Option v-for="(item,index) in categories"
+                    :value="item.id"
+                    :key="index"
+            >
+                {{ item.name }}
+            </Option>
         </Select>
     </div>
 </template>
@@ -10,6 +15,12 @@
     import api from "../../axios/http";
 
     export default {
+        props:{
+            checkedId:{
+                type: Number,
+                default:0,
+            }
+        },
         name: "categorySelect",
         data(){
             return {
@@ -19,17 +30,28 @@
         },
         methods:{
             getList(){
-                api.getTags().then(res=>{
-                    this.tags = res.data.data
+                api.getCategories().then(res=>{
+                    console.log(res)
+                    this.categories = res.data
                 });
+            },
+            passVal(){
+                this.$emit('getCategory', this.category)
             }
         },
         mounted() {
-
+            this.getList()
+        },
+        watch:{
+            checkedId(value){
+                this.category = value
+            }
         }
     }
 </script>
 
-<style scoped>
-
+<style >
+    .ivu-select-dropdown{
+        z-index: 999999 !important;
+    }
 </style>
