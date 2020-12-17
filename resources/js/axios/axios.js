@@ -65,15 +65,12 @@ export function post(url, data = {}) {
 }
 export function filePost(url, data = {}) {
     //默认配置
-    let sendObject = {
-        url: url,
-        method: "post",
+    return service.post(url,data,{
         headers: {
+            Authorization: `Bearer ${localStorage.Token}`,
             'Content-Type': 'multipart/form-data'
-        },
-        data: data
-    };
-    return service(sendObject)
+        }
+    })
 }
 //封装put方法 (resfulAPI常用)
 function put(url, data = {}) {

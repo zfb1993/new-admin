@@ -3,6 +3,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Model\Article;
 
 class ArticleController extends Controller
 {
@@ -10,9 +11,12 @@ class ArticleController extends Controller
     {
         $request->validate([
                 'title' => 'required|max:255',
-                'content' => 'required',
+                'article' => 'required',
             ]);
-
+        return Article::create([
+            'title'=> $request->title,
+            'content'=> $request->article,
+        ]);
     }
 
     public function lists()
@@ -25,7 +29,7 @@ class ArticleController extends Controller
 
     }
 
-    public function uploadImage(Request $request)
+    public function uploadImg(Request $request)
     {
         $path = $request->file('chatu')->store('articles');
         $file_names = explode('/',$path);

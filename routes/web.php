@@ -36,6 +36,8 @@ Route::group([
         Route::post('category_edit','Web\CategoryController@edit');
         Route::post('category_delete','Web\CategoryController@delete');
 
+        Route::post('category_add','Web\CategoryController@create');
+
         Route::post('upload_image','Web\ArticleController@uploadImg');
         Route::get("storage/{file_name}","Web\ArticleController@browse");
     });

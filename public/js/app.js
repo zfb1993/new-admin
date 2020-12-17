@@ -2071,6 +2071,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _axios_http__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../axios/http */ "./resources/js/axios/http.js");
 //
 //
 //
@@ -2089,6 +2090,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "detail",
   data: function data() {
@@ -2109,8 +2113,7 @@ __webpack_require__.r(__webpack_exports__);
             title: _this.title,
             content: _this.value
           };
-
-          _this.$api.postArticle(data).then(function (res) {
+          _axios_http__WEBPACK_IMPORTED_MODULE_0__["default"].postArticle(data).then(function (res) {
             if (res.stauts == 200) {
               _this.$message({
                 message: '发布成功~',
@@ -2130,24 +2133,12 @@ __webpack_require__.r(__webpack_exports__);
       // 第一步.将图片上传到服务器.
       var formdata = new FormData();
       formdata.append('chatu', $file);
-      this.$api.uploadImage(formdata).then(function (url) {
-        console.log(url.data);
-
+      _axios_http__WEBPACK_IMPORTED_MODULE_0__["default"].uploadImage(formdata).then(function (url) {
         _this2.$refs.editor.$img2Url(pos, baseUrl + '/storage/' + url.data);
-      }); // axios({
-      //     url: 'server url',
-      //     method: 'post',
-      //     data: formdata,
-      //     headers: { 'Content-Type': 'multipart/form-data' },
-      // }).then((url) => {
-      //     // 第二步.将返回的url替换到文本原位置![...](./0) -> ![...](url)
-      //     /**
-      //      * $vm 指为mavonEditor实例，可以通过如下两种方式获取
-      //      * 1. 通过引入对象获取: `import {mavonEditor} from ...` 等方式引入后，`$vm`为`mavonEditor`
-      //      * 2. 通过$refs获取: html声明ref : `<mavon-editor ref=md ></mavon-editor>，`$vm`为 `this.$refs.md`
-      //      */
-      //     $vm.$img2Url(pos, url);
-      // })
+      });
+    },
+    createArticle: function createArticle() {
+      console.log(111);
     }
   },
   mounted: function mounted() {}
@@ -66974,7 +66965,7 @@ var render = function() {
     [
       _c(
         "Form",
-        { attrs: { model: "formItem", "label-width": 80 } },
+        { attrs: { model: _vm.article, "label-width": 80 } },
         [
           _c(
             "Col",
@@ -67003,7 +66994,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "Col",
-            { attrs: { span: 16 } },
+            { attrs: { span: 20 } },
             [
               _c(
                 "FormItem",
@@ -67022,6 +67013,22 @@ var render = function() {
                   })
                 ],
                 1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "Col",
+            { staticStyle: { "text-align": "right" }, attrs: { span: 20 } },
+            [
+              _c(
+                "Button",
+                {
+                  attrs: { type: "primary" },
+                  on: { click: _vm.createArticle }
+                },
+                [_vm._v("提交")]
               )
             ],
             1
@@ -84035,15 +84042,12 @@ function post(url) {
 function filePost(url) {
   var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
   //默认配置
-  var sendObject = {
-    url: url,
-    method: "post",
+  return service.post(url, data, {
     headers: {
+      Authorization: "Bearer ".concat(localStorage.Token),
       'Content-Type': 'multipart/form-data'
-    },
-    data: data
-  };
-  return service(sendObject);
+    }
+  });
 } //封装put方法 (resfulAPI常用)
 
 function put(url) {
