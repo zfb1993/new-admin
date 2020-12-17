@@ -100,7 +100,7 @@
                                     },
                                     on: {
                                         click: () => {
-                                            this.remove(params)
+                                            this.remove(row)
                                         }
                                     }
                                 }, '删除')
@@ -112,13 +112,13 @@
             }
         },
         methods:{
-            remove (param) {
+            remove (row) {
                 this.$Modal.confirm({
                     title: '删除',
                     content: '确定要删除么？',
                     onOk: () => {
-                        let data = {id:param.row.id}
-                        api.deleteCategory(data).then(res=>{
+                        let data = {id:row.id}
+                        api.deleteArticle(data).then(res=>{
                             if(res.data.state == 0){
                                 this.$Message.success('删除成功');
                                 this.getList()

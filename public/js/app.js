@@ -2326,7 +2326,7 @@ __webpack_require__.r(__webpack_exports__);
             },
             on: {
               click: function click() {
-                _this.remove(params);
+                _this.remove(row);
               }
             }
           }, '删除')]);
@@ -2336,7 +2336,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    remove: function remove(param) {
+    remove: function remove(row) {
       var _this2 = this;
 
       this.$Modal.confirm({
@@ -2344,9 +2344,9 @@ __webpack_require__.r(__webpack_exports__);
         content: '确定要删除么？',
         onOk: function onOk() {
           var data = {
-            id: param.row.id
+            id: row.id
           };
-          _axios_http_js__WEBPACK_IMPORTED_MODULE_0__["default"].deleteCategory(data).then(function (res) {
+          _axios_http_js__WEBPACK_IMPORTED_MODULE_0__["default"].deleteArticle(data).then(function (res) {
             if (res.data.state == 0) {
               _this2.$Message.success('删除成功');
 
