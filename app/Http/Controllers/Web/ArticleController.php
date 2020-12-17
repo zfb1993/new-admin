@@ -13,12 +13,14 @@ class ArticleController extends Controller
                 'title' => 'required|max:255',
                 'article' => 'required',
             ]);
+
         $res =  Article::create([
             'title'=> $request->title,
             'article'=> $request->article,
             'category_id' => $request->category_id,
             'tag_id' => $request->tag_id,
         ]);
+
         if (isset($res['id'])){
             return ['state'=>0,'message'=>'操作成功'];
         }else{
@@ -28,7 +30,8 @@ class ArticleController extends Controller
 
     public function lists()
     {
-        return Article::paginate(15);
+        $list = Article::with(['category'])->paginate(15);
+        return $list;
     }
 
     public function edit(Request $request)

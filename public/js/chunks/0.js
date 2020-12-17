@@ -68,6 +68,9 @@ __webpack_require__.r(__webpack_exports__);
       name: this.$route.name,
       path: this.$route.path
     });
+  },
+  created: function created() {
+    this.$store.dispatch('AcInit');
   }
 });
 

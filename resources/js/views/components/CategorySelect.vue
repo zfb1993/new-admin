@@ -12,8 +12,6 @@
 </template>
 
 <script>
-    import api from "../../axios/http";
-
     export default {
         props:{
             checkedId:{
@@ -29,18 +27,12 @@
             }
         },
         methods:{
-            getList(){
-                api.getCategories().then(res=>{
-                    console.log(res)
-                    this.categories = res.data
-                });
-            },
             passVal(){
                 this.$emit('getCategory', this.category)
             }
         },
         mounted() {
-            this.getList()
+            this.categories = this.$store.state.categories
         },
         watch:{
             checkedId(value){

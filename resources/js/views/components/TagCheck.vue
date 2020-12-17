@@ -11,8 +11,6 @@
 </template>
 
 <script>
-    import api from "../../axios/http";
-
     export default {
         props:{
             checkedTags:null,
@@ -25,18 +23,12 @@
             }
         },
         methods:{
-            getList(){
-                api.getTags().then(res=>{
-                    this.tags = res.data
-                    console.log(res.data)
-                });
-            },
             passVal(){
                 this.$emit('getTagIds', this.tagIds)
             }
         },
         mounted() {
-            this.getList()
+            this.tags = this.$store.state.Tags
         },
         watch:{
             checkedTags(value){

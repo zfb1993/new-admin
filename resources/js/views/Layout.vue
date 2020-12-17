@@ -56,7 +56,10 @@
         },
         mounted(){
             this.activeName = JSON.stringify({name: this.$route.name, path: this.$route.path});
-        }
+        },
+        created(){
+            this.$store.dispatch('AcInit');
+        },
     }
 </script>
 <style lang="scss" scoped>

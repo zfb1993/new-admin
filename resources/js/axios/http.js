@@ -22,7 +22,7 @@ const api = {
     getArticles(data){
         return post('/article_list',data)
     },
-    getArticle(data){
+    getArticleDetail(data){
         return get('/articleList',data)
     },
     createTag(data){

@@ -39,7 +39,7 @@ Route::group([
 
         Route::post('article_add','Web\ArticleController@create');
         Route::post('article_edit','Web\ArticleController@edit');
-        Route::post('article_list','Web\ArticleController@list');
+        Route::post('article_list','Web\ArticleController@lists');
         Route::post('article_delete','Web\ArticleController@delete');
 
         Route::post('upload_image','Web\ArticleController@uploadImg');
