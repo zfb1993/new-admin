@@ -14,10 +14,7 @@
 <script>
     export default {
         props:{
-            checkedId:{
-                type: Number,
-                default:0,
-            }
+            checkedId:null
         },
         name: "categorySelect",
         data(){
@@ -32,7 +29,8 @@
             }
         },
         mounted() {
-            this.categories = this.$store.state.categories
+            console.log(this.$store.state.Categories)
+            this.categories = this.$store.state.Categories
         },
         watch:{
             checkedId(value){

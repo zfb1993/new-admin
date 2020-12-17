@@ -30,7 +30,7 @@ class ArticleController extends Controller
 
     public function lists()
     {
-        $list = Article::with(['category'])->paginate(2);
+        $list = Article::with(['category'])->paginate(10);
         return $list;
     }
 
@@ -38,12 +38,14 @@ class ArticleController extends Controller
     {
         $request->validate([
             'id'   => 'required',
-            'title' => 'required|unique:tags|max:255',
+            'title' => 'required|max:255',
             'article' => 'required',
         ]);
         $model = Article::find($request->id);
         if ($model){
             $model->title = $request->title;
+            $model->category_id = $request->category_id;
+            $model->tag_id = $request->tag_id;
             $model->article = $request->article;
             $model->save();
             return ['state'=>0,'message'=>'操作成功'];

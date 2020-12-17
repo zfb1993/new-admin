@@ -75,7 +75,7 @@
                         key: 'action',
                         width: 150,
                         align: 'center',
-                        render: (h, params) => {
+                        render: (h, {row}) => {
                             return h('div', [
                                 h('Button', {
                                     props: {
@@ -87,7 +87,9 @@
                                     },
                                     on: {
                                         click: () => {
-
+                                            this.$router.push({
+                                                path: "articleEdit?id="+row.id,
+                                            });
                                         }
                                     }
                                 }, '编辑'),
@@ -137,6 +139,7 @@
                     this.total = res.data.total
                     this.pageSize = res.data.per_page
                     this.loading = false
+                    this.$store.commit('SetArticleList',res.data)
                     this.$Message.success('刷新成功');
                 });
             },
@@ -145,7 +148,15 @@
             }
         },
         mounted() {
-            this.getList(1)
+            if (this.$store.state.ArticleList){
+                let data = this.$store.state.ArticleList
+                this.data = data.data
+                this.current = data.current_page
+                this.total = data.total
+                this.pageSize = data.per_page
+            }else{
+                this.getList(1)
+            }
         }
     }
 </script>

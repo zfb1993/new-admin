@@ -1,11 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import ArticleDetail from '../views/articles/detail.vue'
+import ArticleDetail from '../views/articles/post.vue'
+import ArticleEdit from '../views/articles/edit.vue'
 import ArticleList from '../views/articles/list.vue'
-import TagDetail from '../views/tags/detail.vue'
 import TagList from '../views/tags/list.vue'
-import CategoryDetail from '../views/categories/detail.vue'
 import CategoryList from '../views/categories/list.vue'
 
 Vue.use(VueRouter)
@@ -75,6 +74,12 @@ export const routes = [
                 icon:"md-book",
                 path: 'articleDetail',
                 component: ArticleDetail,
+            },
+            {
+                // name:'新建文章',
+                icon:"md-book",
+                path: 'articleEdit',
+                component: ArticleEdit,
             },
         ],
     },

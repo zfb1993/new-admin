@@ -7,10 +7,11 @@ export default new Vuex.Store({
     state: {
         Tags:null,
         Categories:null,
+        ArticleList:null,
     },
     mutations: {
-        RefreshToken(state, info) {
-            state.Token = info;
+        SetArticleList(state, list){
+            state.ArticleList = list
         },
     },
     actions: {
