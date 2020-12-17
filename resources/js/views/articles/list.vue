@@ -4,6 +4,14 @@
             <Button type="primary" @click="getList">刷新</Button>
         </div>
         <Table border :columns="columns" :data="data" :loading="loading"></Table>
+        <div  class="m-top-10">
+            <Page  show-total show-elevator
+                   :current="current"
+                   :total="total"
+                   :page-size="pageSize"
+                   @on-change="changePage"
+            />
+        </div>
     </div>
 </template>
 
@@ -14,6 +22,9 @@
         data () {
             return {
                 loading: false,
+                current: 1,
+                total: 1,
+                pageSize: 1,
                 columns: [
                     {
                         title: 'id',
@@ -117,18 +128,24 @@
                     }
                 });
             },
-            getList(){
+            getList(page = 1){
                 this.loading = true
-                let data = {isPage:true}
+                let data = {isPage:true,page:page}
                 api.getArticles(data).then(res=>{
                     this.data = res.data.data
+                    this.current = res.data.current_page
+                    this.total = res.data.total
+                    this.pageSize = res.data.per_page
                     this.loading = false
                     this.$Message.success('刷新成功');
                 });
             },
+            changePage(page){
+                this.getList(page)
+            }
         },
         mounted() {
-            this.getList()
+            this.getList(1)
         }
     }
 </script>
@@ -136,5 +153,9 @@
 <style scoped>
     .m10{
         margin-bottom: 10px;
+    }
+    .m-top-10{
+        margin-top: 10px;
+        text-align: right;
     }
 </style>

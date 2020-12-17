@@ -2201,6 +2201,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ArticleList",
@@ -2209,6 +2217,9 @@ __webpack_require__.r(__webpack_exports__);
 
     return {
       loading: false,
+      current: 1,
+      total: 1,
+      pageSize: 1,
       columns: [{
         title: 'id',
         key: 'id'
@@ -2307,20 +2318,28 @@ __webpack_require__.r(__webpack_exports__);
     getList: function getList() {
       var _this3 = this;
 
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
       this.loading = true;
       var data = {
-        isPage: true
+        isPage: true,
+        page: page
       };
       _axios_http_js__WEBPACK_IMPORTED_MODULE_0__["default"].getArticles(data).then(function (res) {
         _this3.data = res.data.data;
+        _this3.current = res.data.current_page;
+        _this3.total = res.data.total;
+        _this3.pageSize = res.data.per_page;
         _this3.loading = false;
 
         _this3.$Message.success('刷新成功');
       });
+    },
+    changePage: function changePage(page) {
+      this.getList(page);
     }
   },
   mounted: function mounted() {
-    this.getList();
+    this.getList(1);
   }
 });
 
@@ -2896,7 +2915,7 @@ module.exports = exports;
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n.m10[data-v-58daf2c1]{\n    margin-bottom: 10px;\n}\n", ""]);
+exports.push([module.i, "\n.m10[data-v-58daf2c1]{\n    margin-bottom: 10px;\n}\n.m-top-10[data-v-58daf2c1]{\n    margin-top: 10px;\n    text-align: right;\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -67476,7 +67495,25 @@ var render = function() {
           data: _vm.data,
           loading: _vm.loading
         }
-      })
+      }),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "m-top-10" },
+        [
+          _c("Page", {
+            attrs: {
+              "show-total": "",
+              "show-elevator": "",
+              current: _vm.current,
+              total: _vm.total,
+              "page-size": _vm.pageSize
+            },
+            on: { "on-change": _vm.changePage }
+          })
+        ],
+        1
+      )
     ],
     1
   )
