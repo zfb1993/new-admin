@@ -84961,7 +84961,10 @@ var api = {
     return Object(_axios__WEBPACK_IMPORTED_MODULE_0__["post"])('/login', data);
   },
   userInfo: function userInfo(data) {
-    return Object(_axios__WEBPACK_IMPORTED_MODULE_0__["post"])('/user', data);
+    return Object(_axios__WEBPACK_IMPORTED_MODULE_0__["post"])('/me', data);
+  },
+  userLogout: function userLogout(data) {
+    return Object(_axios__WEBPACK_IMPORTED_MODULE_0__["post"])('/logout', data);
   },
   uploadImage: function uploadImage(data) {
     return Object(_axios__WEBPACK_IMPORTED_MODULE_0__["filePost"])('/upload_image', data);
@@ -84977,9 +84980,6 @@ var api = {
   },
   getArticles: function getArticles(data) {
     return Object(_axios__WEBPACK_IMPORTED_MODULE_0__["post"])('/article_list', data);
-  },
-  getArticleDetail: function getArticleDetail(data) {
-    return Object(_axios__WEBPACK_IMPORTED_MODULE_0__["get"])('/articleList', data);
   },
   createTag: function createTag(data) {
     return Object(_axios__WEBPACK_IMPORTED_MODULE_0__["post"])('/tag_add', data);
@@ -85168,11 +85168,25 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
   state: {
     Tags: null,
     Categories: null,
-    ArticleList: null
+    ArticleList: null,
+    UserInfo: {
+      name: ''
+    }
   },
   mutations: {
     SetArticleList: function SetArticleList(state, list) {
       state.ArticleList = list;
+    },
+    SetUserInfo: function SetUserInfo(state, userInfo) {
+      state.UserInfo = userInfo;
+    },
+    Logout: function Logout(state) {
+      state.Tags = null;
+      state.Categories = null;
+      state.ArticleList = null;
+      state.UserInfo = {
+        name: ''
+      };
     }
   },
   actions: {
@@ -85190,6 +85204,12 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
       if (!state.Categories) {
         _axios_http__WEBPACK_IMPORTED_MODULE_2__["default"].getCategories().then(function (res) {
           state.Categories = res.data;
+        });
+      }
+
+      if (!state.UserInfo.name) {
+        _axios_http__WEBPACK_IMPORTED_MODULE_2__["default"].userInfo().then(function (res) {
+          state.UserInfo = res.data;
         });
       }
     }

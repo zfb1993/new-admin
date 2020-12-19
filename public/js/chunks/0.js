@@ -85,6 +85,13 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -94,8 +101,46 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'TopBar'
+  name: 'TopBar',
+  data: function data() {
+    return {
+      username: ''
+    };
+  },
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])(['UserInfo'])),
+  methods: {
+    menuClick: function menuClick(name) {
+      this[name]();
+    },
+    logout: function logout() {
+      var _this = this;
+
+      this.$api.userLogout().then(function (res) {
+        if (res.status == 200) {
+          localStorage.Token = null;
+
+          _this.$store.commit('Logout');
+
+          _this.$router.push({
+            path: "login"
+          });
+        }
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -129,7 +174,7 @@ module.exports = exports;
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, ".top[data-v-7e84ac86] {\n  height: 70px;\n  width: 100%;\n  display: flex;\n}\n.top .left[data-v-7e84ac86] {\n  background-color: #363e4f;\n  width: 240px;\n  height: 100%;\n}\n.top .right[data-v-7e84ac86] {\n  height: 100%;\n  width: calc(100% - 240px);\n  border-bottom: 1px solid #e6e6e6;\n  display: flex;\n  align-items: center;\n  background: white;\n}", ""]);
+exports.push([module.i, ".top[data-v-7e84ac86] {\n  height: 70px;\n  width: 100%;\n  display: flex;\n}\n.top .left[data-v-7e84ac86] {\n  background-color: #363e4f;\n  width: 240px;\n  height: 100%;\n}\n.top .right[data-v-7e84ac86] {\n  height: 100%;\n  width: calc(100% - 240px);\n  border-bottom: 1px solid #e6e6e6;\n  display: flex;\n  align-items: center;\n  background: white;\n  justify-content: space-between;\n}", ""]);
 // Exports
 module.exports = exports;
 
@@ -321,7 +366,44 @@ var render = function() {
     _c("div", { staticClass: "right" }, [
       _c("h1", { staticStyle: { "margin-left": "45px" } }, [
         _vm._v(_vm._s(_vm.$route.name))
-      ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticStyle: { "margin-right": "30px" } },
+        [
+          _c(
+            "Dropdown",
+            { on: { "on-click": _vm.menuClick } },
+            [
+              _vm._v(
+                "\n                " +
+                  _vm._s(_vm.UserInfo.name) +
+                  "\n                "
+              ),
+              _c(
+                "a",
+                { attrs: { href: "javascript:void(0)" } },
+                [_c("Icon", { attrs: { type: "ios-arrow-down" } })],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "DropdownMenu",
+                { attrs: { slot: "list" }, slot: "list" },
+                [
+                  _c("DropdownItem", { attrs: { name: "logout" } }, [
+                    _vm._v("退出登录")
+                  ])
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
     ])
   ])
 }

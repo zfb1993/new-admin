@@ -8,11 +8,25 @@ export default new Vuex.Store({
         Tags:null,
         Categories:null,
         ArticleList:null,
+        UserInfo: {
+            name:''
+        },
     },
     mutations: {
         SetArticleList(state, list){
             state.ArticleList = list
         },
+        SetUserInfo(state,userInfo) {
+            state.UserInfo = userInfo
+        },
+        Logout(state){
+            state.Tags = null
+            state.Categories = null
+            state.ArticleList = null
+            state.UserInfo = {
+                name:''
+            }
+        }
     },
     actions: {
         AcInit({dispatch, state, commit}) {
@@ -24,6 +38,11 @@ export default new Vuex.Store({
             if (!state.Categories){
                 api.getCategories().then(res=>{
                     state.Categories = res.data
+                })
+            }
+            if (!state.UserInfo.name){
+                api.userInfo().then(res=>{
+                    state.UserInfo = res.data
                 })
             }
         }

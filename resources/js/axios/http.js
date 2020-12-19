@@ -5,8 +5,12 @@ const api = {
         return post('/login',data)
     },
     userInfo(data){
-        return post('/user',data)
+        return post('/me',data)
     },
+    userLogout(data){
+        return post('/logout',data)
+    },
+
     uploadImage(data){
         return filePost('/upload_image',data)
     },
@@ -22,9 +26,7 @@ const api = {
     getArticles(data){
         return post('/article_list',data)
     },
-    getArticleDetail(data){
-        return get('/articleList',data)
-    },
+
     createTag(data){
         return post('/tag_add',data)
     },
@@ -37,6 +39,7 @@ const api = {
     deleteTag(data){
         return post('/tag_delete',data)
     },
+
     createCategory(data){
         return post('/category_add',data)
     },
@@ -49,6 +52,7 @@ const api = {
     deleteCategory(data){
         return post('/category_delete',data)
     },
+
 }
 
 
