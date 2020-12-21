@@ -30,7 +30,7 @@ class ArticleController extends Controller
 
     public function lists()
     {
-        $list = Article::with(['category'])->paginate(10);
+        $list = Article::paginate(10);
         return $list;
     }
 
