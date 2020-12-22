@@ -14,10 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
 
-Route::middleware('auth:api')->group(function (){
+Route::middleware('signDecode')->group(function (){
+    Route::post('articles','Api\ArticleController@articleList');
+    Route::post('categories','Api\CategoryController@categoryList');
+    Route::post('tags','Api\TagController@tagList');
 
+    Route::post('allCategories','Api\CategoryController@allCategories');
+    Route::post('allTags','Api\TagController@allTags');
 });

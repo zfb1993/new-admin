@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Model\Article as ArticleModel;
 
-class Article extends Controller
+class ArticleController extends Controller
 {
     /**
      * 列表及其搜索
