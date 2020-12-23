@@ -10,7 +10,10 @@ class CategoryController extends Controller
     //获取文章分类列表和对应的文章数量
     public function categoryList()
     {
-
+        return Article::groupBy('category_id')
+            ->whereNotNull('category_id')
+            ->selectRaw('category_id,count(*) as count')
+            ->get();
     }
 
     public function allCategories()

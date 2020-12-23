@@ -17,8 +17,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('signDecode')->group(function (){
     Route::post('articles','Api\ArticleController@articleList');
+    Route::post('archives','Api\ArticleController@archives');
     Route::post('categories','Api\CategoryController@categoryList');
-    Route::post('tags','Api\TagController@tagList');
 
     Route::post('allCategories','Api\CategoryController@allCategories');
     Route::post('allTags','Api\TagController@allTags');
