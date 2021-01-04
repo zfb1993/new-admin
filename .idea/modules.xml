@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/laravel-blog.iml" filepath="$PROJECT_DIR$/.idea/laravel-blog.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../rabitmq/.idea/rabitmq.iml" filepath="$PROJECT_DIR$/../rabitmq/.idea/rabitmq.iml" />
     </modules>
   </component>
 </project>

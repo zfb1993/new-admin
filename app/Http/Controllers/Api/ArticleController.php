@@ -11,9 +11,14 @@ class ArticleController extends Controller
      */
     public function articleList()
     {
-        $model = new ArticleModel();
+        $model = ArticleModel::query();
         //搜索条件
-        $list = $model->paginate(2);
+        $request = request();
+        if (isset($request->keyword)){
+            $list = ArticleModel::search($request->keyword)->get();
+        }else{
+            $list = $model->paginate(2);
+        }
         return $list;
     }
 
