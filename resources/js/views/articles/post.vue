@@ -70,6 +70,9 @@
                         api.createArticle(data).then(res=>{
                             if(res.data.state == 0){
                                 this.$Message.success('操作成功');
+                                this.$router.push({
+                                    path:'articleList'
+                                })
                             }
                         })
                     }else{
