@@ -2031,7 +2031,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 // @ is an alias to /src
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Home'
+  name: 'Home',
+  mounted: function mounted() {
+    if (sessionStorage.getItem('token') == null) {
+      this.$router.push({
+        path: "login"
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -2052,7 +2059,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Index",
   mounted: function mounted() {
-    if (localStorage.Token == null) {
+    if (sessionStorage.getItem('token') == null) {
       this.$router.push({
         path: "login"
       });
@@ -2487,6 +2494,10 @@ __webpack_require__.r(__webpack_exports__);
           _axios_http__WEBPACK_IMPORTED_MODULE_0__["default"].createArticle(data).then(function (res) {
             if (res.data.state == 0) {
               _this.$Message.success('操作成功');
+
+              _this.$router.push({
+                path: 'articleList'
+              });
             }
           });
         } else {
@@ -84724,6 +84735,25 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(view_design__WEBPACK_IMPORTED_MOD
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.$axios = axios__WEBPACK_IMPORTED_MODULE_6___default.a;
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.prototype.$api = _axios_http__WEBPACK_IMPORTED_MODULE_5__["default"];
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('Home', __webpack_require__(/*! ./views/Index.vue */ "./resources/js/views/Index.vue")["default"]);
+_router__WEBPACK_IMPORTED_MODULE_1__["router"].beforeEach(function (to, from, next) {
+  console.log(sessionStorage.getItem('token'), to);
+
+  if (to.meta.title) {
+    document.title = to.meta.title;
+  }
+
+  var path = to.path; // 只要不是登录的路由都需要先检查token
+
+  if (path !== '/login') {
+    if (sessionStorage.getItem('token')) {
+      next();
+    } else {
+      next('/login');
+    }
+  } else {
+    next(); // 确保一定要有next()被调用
+  }
+});
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app',
   router: _router__WEBPACK_IMPORTED_MODULE_1__["router"],
@@ -84804,7 +84834,7 @@ function get(url) {
   var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
   return service.get(url, data, {
     headers: {
-      Authorization: "Bearer ".concat(localStorage.Token)
+      Authorization: "Bearer ".concat(sessionStorage.getItem('token'))
     }
   });
 } //封装post请求
@@ -84814,7 +84844,7 @@ function post(url) {
   //默认配置
   return service.post(url, data, {
     headers: {
-      Authorization: "Bearer ".concat(localStorage.Token)
+      Authorization: "Bearer ".concat(sessionStorage.getItem('token'))
     }
   });
 }
@@ -84823,7 +84853,7 @@ function filePost(url) {
   //默认配置
   return service.post(url, data, {
     headers: {
-      Authorization: "Bearer ".concat(localStorage.Token),
+      Authorization: "Bearer ".concat(sessionStorage.getItem('token')),
       'Content-Type': 'multipart/form-data'
     }
   });

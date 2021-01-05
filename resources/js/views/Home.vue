@@ -8,5 +8,12 @@
 // @ is an alias to /src
 export default {
   name: 'Home',
+  mounted() {
+      if (sessionStorage.getItem('token') == null){
+          this.$router.push({
+              path: "login",
+          });
+      }
+  }
 }
 </script>

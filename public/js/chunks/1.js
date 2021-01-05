@@ -79,7 +79,7 @@ __webpack_require__.r(__webpack_exports__);
         //校验用户名和密码是否正确;
         this.$api.userLogin(this.user).then(function (res) {
           if (res.status == 200) {
-            localStorage.Token = res.data.access_token;
+            sessionStorage.setItem('token', res.data.access_token);
 
             _this.$store.dispatch('AcInit');
 

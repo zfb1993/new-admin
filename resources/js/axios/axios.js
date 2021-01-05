@@ -52,7 +52,7 @@ service.interceptors.response.use(
 // params={} 是设置默认值
 export function get(url, params = {}) {
     return service.get(url,data,{
-        headers: { Authorization: `Bearer ${localStorage.Token}` }
+        headers: { Authorization: `Bearer ${sessionStorage.getItem('token')}` }
     })
 }
 
@@ -60,14 +60,14 @@ export function get(url, params = {}) {
 export function post(url, data = {}) {
     //默认配置
     return service.post(url,data,{
-        headers: { Authorization: `Bearer ${localStorage.Token}` }
+        headers: { Authorization: `Bearer ${sessionStorage.getItem('token')}` }
     })
 }
 export function filePost(url, data = {}) {
     //默认配置
     return service.post(url,data,{
         headers: {
-            Authorization: `Bearer ${localStorage.Token}`,
+            Authorization: `Bearer ${sessionStorage.getItem('token')}`,
             'Content-Type': 'multipart/form-data'
         }
     })

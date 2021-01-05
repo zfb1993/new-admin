@@ -37,7 +37,7 @@ export default {
         logout(){
             this.$api.userLogout().then(res=>{
                 if (res.status == 200){
-                    localStorage.Token = null
+                    sessionStorage.setItem('token',null)
                     this.$store.commit('Logout')
                     this.$router.push({
                         path: "login",

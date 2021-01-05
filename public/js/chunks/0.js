@@ -130,7 +130,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       this.$api.userLogout().then(function (res) {
         if (res.status == 200) {
-          localStorage.Token = null;
+          sessionStorage.setItem('token', null);
 
           _this.$store.commit('Logout');
 

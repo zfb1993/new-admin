@@ -16,6 +16,23 @@ Vue.prototype.$axios = axios
 Vue.prototype.$api = api
 Vue.component('Home', require('./views/Index.vue').default);
 
+router.beforeEach((to, from, next) => {
+    console.log(sessionStorage.getItem('token'),to)
+    if (to.meta.title) {
+        document.title = to.meta.title
+    }
+    const path = to.path
+    // 只要不是登录的路由都需要先检查token
+    if (path !== '/login') {
+        if (sessionStorage.getItem('token')) {
+            next()
+        } else {
+            next('/login')
+        }
+    } else {
+        next()  // 确保一定要有next()被调用
+    }
+})
 
 const app = new Vue({
     el: '#app',

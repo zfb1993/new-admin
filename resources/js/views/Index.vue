@@ -6,7 +6,7 @@
     export default {
         name: "Index",
         mounted() {
-            if (localStorage.Token == null){
+            if (sessionStorage.getItem('token') == null){
                 this.$router.push({
                     path: "login",
                 });
