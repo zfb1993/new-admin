@@ -21,7 +21,7 @@ Route::group([
 ], function ($router) {
     Route::post('register','Web\AuthController@register');
     Route::post('login', 'Web\AuthController@login');
-    Route::get("storage/{file_name}","Web\ArticleController@browse");
+    Route::get('storage/{file_name}','Web\ArticleController@browse');
     Route::middleware(['auth:web'])->group(function (){
         Route::post('logout', 'Web\AuthController@logout');
         Route::post('refresh', 'Web\AuthController@refresh');

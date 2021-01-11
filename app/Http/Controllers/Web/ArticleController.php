@@ -73,7 +73,6 @@ class ArticleController extends Controller
     }
 
     function browse($file_name){
-        return 111;
         return response()->file(storage_path('app/articles/').$file_name);
     }
 }
