@@ -25,6 +25,12 @@ class SignDecode
         $sign = base64_decode($sign);
         $timeStamp = substr($sign, -20);
         $timeStamp = base64_decode($timeStamp);
+        //如果当前时间戳和签名中的相差大于30s
+        $now =  bcmul(microtime(true), 1000);
+        if($now - $timeStamp > 30000){
+            response()->json(['message' => '签名过期'], Response::HTTP_UNAUTHORIZED)->send();
+            exit;
+        }
         $secret = 'AJZ11bguZxcvLG#';
         $checkSign = md5($secret.$timeStamp).base64_encode($timeStamp);
         if ($checkSign != $sign){
