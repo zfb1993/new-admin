@@ -54,7 +54,7 @@
                 } else {
                     //校验用户名和密码是否正确;
                     this.$api.userLogin(this.user).then(res => {
-                        if(res.status == 200){
+                        if(res.status && res.status == 200){
                             sessionStorage.setItem('token',res.data.access_token)
                             this.$store.dispatch('AcInit');
                             this.$router.push({
