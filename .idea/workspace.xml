@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="05756032-9271-4a4b-bec6-b7902d55d6f2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/laravel-blog.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/laravel-blog.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/ArticleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/ArticleController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Model/Article.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Model/Article.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Web/ArticleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Web/ArticleController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,7 +157,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../rabitmq" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
     <property name="ts.external.directory.path" value="E:\PhpStorm 2019.3.4\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
@@ -204,7 +197,10 @@
       <workItem from="1608788302059" duration="6879000" />
       <workItem from="1609115616837" duration="597000" />
       <workItem from="1609123638206" duration="12834000" />
-      <workItem from="1609726640168" duration="9806000" />
+      <workItem from="1609726640168" duration="14178000" />
+      <workItem from="1609828993576" duration="8171000" />
+      <workItem from="1610327237950" duration="8583000" />
+      <workItem from="1610938630916" duration="9895000" />
     </task>
     <servers />
   </component>
@@ -246,13 +242,28 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-23" y="51" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1608367577491" />
+    <state x="636" y="253" width="647" height="534" key="find.popup" timestamp="1610952885642">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="636" y="253" width="647" height="534" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1610952885642" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1607914247916">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1607914247916" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1609728711557">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1610953119971">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1609728711557" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1610953119971" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/vendor/tamayo/laravel-scout-elastic/src/LaravelScoutElasticProvider.php</url>
+          <line>11</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

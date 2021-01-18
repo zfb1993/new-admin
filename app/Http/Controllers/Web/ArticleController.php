@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\Article;
+use App\Jobs\ImportScout;
 
 class ArticleController extends Controller
 {
@@ -22,6 +23,7 @@ class ArticleController extends Controller
         ]);
 
         if (isset($res['id'])){
+            ImportScout::dispatch();
             return ['state'=>0,'message'=>'操作成功'];
         }else{
             return ['state'=>1,'message'=>'操作失败'];
@@ -48,6 +50,7 @@ class ArticleController extends Controller
             $model->tag_id = $request->tag_id;
             $model->article = $request->article;
             $model->save();
+            ImportScout::dispatch();
             return ['state'=>0,'message'=>'操作成功'];
         }
         return ['state'=>1,'message'=>'操作失败'];
@@ -60,6 +63,7 @@ class ArticleController extends Controller
         ]);
         $res = Article::where(['id'=>$request->id])->delete();
         if ($res){
+            ImportScout::dispatch();
             return ['state'=>0,'msg'=>'删除成功'];
         }
         return ['state'=>1,'message'=>'删除失败'];
