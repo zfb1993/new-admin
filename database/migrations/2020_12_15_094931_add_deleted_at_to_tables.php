@@ -20,10 +20,6 @@ class AddDeletedAtToTables extends Migration
         Schema::table('categories', function (Blueprint $table) {
             $table->dateTime('deleted_at')->nullable()->default(null);
         });
-
-        Schema::table('articles', function (Blueprint $table) {
-            $table->dateTime('deleted_at')->nullable()->default(null);
-        });
     }
 
     /**
