@@ -10,7 +10,7 @@ class CategoryController extends Controller
     public function create(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required|unique:tags|max:255',
+            'name' => 'required|unique:categories|max:255',
         ]);
         $res = Category::create(['name'=>$request->name]);
         if ($res){
