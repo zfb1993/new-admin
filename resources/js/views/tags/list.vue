@@ -111,7 +111,7 @@
                     content: '确定要删除么？',
                     onOk: () => {
                         let data = {id:param.row.id}
-                        api.deleteCategory(data).then(res=>{
+                        api.deleteTag(data).then(res=>{
                             if(res.data.state == 0){
                                 this.$Message.success('删除成功');
                                 this.getList()

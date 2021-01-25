@@ -2928,7 +2928,7 @@ __webpack_require__.r(__webpack_exports__);
           var data = {
             id: param.row.id
           };
-          _axios_http_js__WEBPACK_IMPORTED_MODULE_0__["default"].deleteCategory(data).then(function (res) {
+          _axios_http_js__WEBPACK_IMPORTED_MODULE_0__["default"].deleteTag(data).then(function (res) {
             if (res.data.state == 0) {
               _this2.$Message.success('删除成功');
 
