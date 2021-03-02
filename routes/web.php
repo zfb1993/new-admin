@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('admin');
 });
+Route::get('test','Test\TestController@miaoSha');
 Route::group([
     'prefix' => 'web',
 ], function ($router) {
