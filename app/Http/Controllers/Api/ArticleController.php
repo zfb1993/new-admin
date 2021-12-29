@@ -44,6 +44,6 @@ class ArticleController extends Controller
             $item->date = $item->created_at->month.'/'.$item->created_at->day;
             $times[$time][] = $item;
         });
-        return $times;
+        return array_reverse($times);
     }
 }
